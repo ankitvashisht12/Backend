@@ -1,8 +1,5 @@
-const { langRepoJob } = require('./github/langRepo');
-const { orgRepoJob } = require('./github/orgRepo');
-const PRRepoJob = require('./github/prRepo');
+// const { langRepoJob } = require('./github/langRepo');
+// const { orgRepoJob } = require('./github/orgRepo');
 
-langRepoJob.start();
-orgRepoJob.start();
-/*  Start storing the pull requests */
-PRRepoJob.start();
+// langRepoJob.start();
+// orgRepoJob.start();
