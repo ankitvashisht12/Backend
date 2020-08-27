@@ -21,6 +21,7 @@ const config = {
   },
   DB: {
     URL: getEnvVariable('DB_URL'),
+    POOL_SIZE: getEnvVariable('DB_POOLSIZE'),
   },
   JWT: {
     SECRET: getEnvVariable('JWT_SECRET'),
