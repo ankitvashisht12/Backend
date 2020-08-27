@@ -39,20 +39,13 @@ module.exports = {
 
   updateSocials: create(
     async (req, res) => {
-      // eslint-disable-next-line object-curly-newline
-      const { website, github, linkedin, twitter } = req.body;
+      const socials = res.locals.inputBody;
 
-      // eslint-disable-next-line object-curly-newline
-      const socials = { website, github, linkedin, twitter };
-
-      const user = await User.findOneAndUpdate(
+      const user = await User.findByIdAndUpdate(
         req.user.id,
-        {
-          socials,
-        },
+        { socials },
         { new: true },
       ).select(User.getProfileFields().join(' '));
-
       res.json({ data: user });
     },
     {
@@ -60,6 +53,7 @@ module.exports = {
         validators: validators.updateSocials,
         throwError: true,
       },
+      inputs: ['website', 'github', 'linkedin', 'twitter'],
     },
   ),
 };
