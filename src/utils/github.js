@@ -40,6 +40,42 @@ module.exports = {
         reject(error);
       }
     }),
+  searchStarredRepos: async (
+    accessToken,
+    // eslint-disable-next-line camelcase, object-curly-newline
+    { sort, direction, page, per_page },
+  ) =>
+    new Promise(async (resolve, reject) => {
+      try {
+        const queryStr = querystring.stringify({
+          sort,
+          direction,
+          page,
+          per_page,
+        });
+        const resp = await http.get(`/user/starred?${queryStr}`, {
+          headers: { Authorization: `token ${accessToken}` },
+        });
+        const { link } = resp.headers;
+        let hasNextPage = false;
+
+        if (link) {
+          const linksArray = link.split(',');
+          // eslint-disable-next-line no-restricted-syntax
+          for (const elem of linksArray) {
+            const linkArray = elem.split(';');
+            if (linkArray.length > 1 && linkArray[1].includes('rel="next"')) {
+              hasNextPage = true;
+              break;
+            }
+          }
+        }
+
+        resolve({ data: resp.data, hasNextPage });
+      } catch (error) {
+        reject(error);
+      }
+    }),
 
   searchIssues: async (
     accessToken,
