@@ -1,7 +1,7 @@
 const querystring = require('querystring');
 const { Octokit } = require('@octokit/core');
 
-const pagination = (link, hasNextPage) => {
+const checkForNextPage = (link) => {
   if (link) {
     const linksArray = link.split(',');
     // eslint-disable-next-line no-restricted-syntax
@@ -9,16 +9,15 @@ const pagination = (link, hasNextPage) => {
       const linkArray = elem.split(';');
       if (linkArray.length > 1 && linkArray[1].includes('rel="next"')) {
         // eslint-disable-next-line no-param-reassign
-        hasNextPage = true;
-        break;
+        return true;
       }
     }
   }
 
-  return hasNextPage;
+  return false;
 };
 
-const generateAuth = (accessToken) =>
+const createOctokit = (accessToken) =>
   new Octokit({
     auth: accessToken,
   });
@@ -28,7 +27,7 @@ module.exports = {
   searchRepos: async (accessToken, { query, sort, order, page, per_page }) =>
     new Promise(async (resolve, reject) => {
       try {
-        const octokit = generateAuth(accessToken);
+        const octokit = createOctokit(accessToken);
 
         const queryStr = querystring.stringify({
           sort,
@@ -44,9 +43,8 @@ module.exports = {
         );
 
         const { link } = resp.headers;
-        let hasNextPage = false;
 
-        hasNextPage = pagination(link, hasNextPage);
+        const hasNextPage = checkForNextPage(link);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -61,7 +59,7 @@ module.exports = {
   ) =>
     new Promise(async (resolve, reject) => {
       try {
-        const octokit = generateAuth(accessToken);
+        const octokit = createOctokit(accessToken);
 
         const queryStr = querystring.stringify({
           sort,
@@ -73,9 +71,8 @@ module.exports = {
         const resp = await octokit.request(`GET /user/starred?${queryStr}`);
 
         const { link } = resp.headers;
-        let hasNextPage = false;
 
-        hasNextPage = pagination(link, hasNextPage);
+        const hasNextPage = checkForNextPage(link);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -90,7 +87,7 @@ module.exports = {
   ) =>
     new Promise(async (resolve, reject) => {
       try {
-        const octokit = generateAuth(accessToken);
+        const octokit = createOctokit(accessToken);
 
         const obj = {
           sort,
@@ -116,9 +113,8 @@ module.exports = {
         );
 
         const { link } = resp.headers;
-        let hasNextPage = false;
 
-        hasNextPage = pagination(link, hasNextPage);
+        const hasNextPage = checkForNextPage(link);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -130,7 +126,7 @@ module.exports = {
   searchPullRequests: async (accessToken, { owner, repo, page, per_page }) =>
     new Promise(async (resolve, reject) => {
       try {
-        const octokit = generateAuth(accessToken);
+        const octokit = createOctokit(accessToken);
 
         const queryStr = querystring.stringify({
           page,
@@ -145,9 +141,8 @@ module.exports = {
         );
 
         const { link } = resp.headers;
-        let hasNextPage = false;
 
-        hasNextPage = pagination(link, hasNextPage);
+        const hasNextPage = checkForNextPage(link);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -159,7 +154,7 @@ module.exports = {
   starRepo: async (accessToken, { owner, repo }) =>
     new Promise(async (resolve, reject) => {
       try {
-        const octokit = generateAuth(accessToken);
+        const octokit = createOctokit(accessToken);
 
         const resp = await octokit.request('PUT /user/starred/{owner}/{repo}', {
           owner,
@@ -176,7 +171,7 @@ module.exports = {
   unstarRepo: async (accessToken, { owner, repo }) =>
     new Promise(async (resolve, reject) => {
       try {
-        const octokit = generateAuth(accessToken);
+        const octokit = createOctokit(accessToken);
 
         const resp = await octokit.request(
           'DELETE /user/starred/{owner}/{repo}',
