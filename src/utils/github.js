@@ -1,8 +1,29 @@
 const querystring = require('querystring');
-const pagination = require('./pagination');
-const generateAuth = require('./generateAuth');
+const { Octokit } = require('@octokit/core');
 
 let hasNextPage = false;
+
+const pagination = (link) => {
+  if (link) {
+    const linksArray = link.split(',');
+    // eslint-disable-next-line no-restricted-syntax
+    for (const elem of linksArray) {
+      const linkArray = elem.split(';');
+      if (linkArray.length > 1 && linkArray[1].includes('rel="next"')) {
+        // eslint-disable-next-line no-param-reassign
+        hasNextPage = true;
+        break;
+      }
+    }
+  }
+
+  return hasNextPage;
+};
+
+const generateAuth = (accessToken) =>
+  new Octokit({
+    auth: accessToken,
+  });
 
 module.exports = {
   // eslint-disable-next-line camelcase, object-curly-newline
@@ -26,7 +47,7 @@ module.exports = {
 
         const { link } = resp.headers;
 
-        hasNextPage = pagination(link, hasNextPage);
+        hasNextPage = pagination(link);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -54,7 +75,7 @@ module.exports = {
 
         const { link } = resp.headers;
 
-        hasNextPage = pagination(link, hasNextPage);
+        hasNextPage = pagination(link);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -96,7 +117,7 @@ module.exports = {
 
         const { link } = resp.headers;
 
-        hasNextPage = pagination(link, hasNextPage);
+        hasNextPage = pagination(link);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -124,7 +145,7 @@ module.exports = {
 
         const { link } = resp.headers;
 
-        hasNextPage = pagination(link, hasNextPage);
+        hasNextPage = pagination(link);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
