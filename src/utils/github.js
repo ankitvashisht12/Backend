@@ -1,14 +1,34 @@
 const querystring = require('querystring');
 const { Octokit } = require('@octokit/core');
 
+const checkForNextPage = (link) => {
+  if (link) {
+    const linksArray = link.split(',');
+    // eslint-disable-next-line no-restricted-syntax
+    for (const elem of linksArray) {
+      const linkArray = elem.split(';');
+      if (linkArray.length > 1 && linkArray[1].includes('rel="next"')) {
+        // eslint-disable-next-line no-param-reassign
+        return true;
+      }
+    }
+  }
+
+  return false;
+};
+
+const createOctokit = (accessToken) =>
+  new Octokit({
+    auth: accessToken,
+  });
+
 module.exports = {
   // eslint-disable-next-line camelcase, object-curly-newline
   searchRepos: async (accessToken, { query, sort, order, page, per_page }) =>
     new Promise(async (resolve, reject) => {
       try {
-        const octokit = new Octokit({
-          auth: `${accessToken}`,
-        });
+        const octokit = createOctokit(accessToken);
+
         const queryStr = querystring.stringify({
           sort,
           order,
@@ -21,20 +41,10 @@ module.exports = {
             q: query,
           },
         );
-        const { link } = resp.headers;
-        let hasNextPage = false;
 
-        if (link) {
-          const linksArray = link.split(',');
-          // eslint-disable-next-line no-restricted-syntax
-          for (const elem of linksArray) {
-            const linkArray = elem.split(';');
-            if (linkArray.length > 1 && linkArray[1].includes('rel="next"')) {
-              hasNextPage = true;
-              break;
-            }
-          }
-        }
+        const { link } = resp.headers;
+
+        const hasNextPage = checkForNextPage(link);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -49,9 +59,8 @@ module.exports = {
   ) =>
     new Promise(async (resolve, reject) => {
       try {
-        const octokit = new Octokit({
-          auth: `${accessToken}`,
-        });
+        const octokit = createOctokit(accessToken);
+
         const queryStr = querystring.stringify({
           sort,
           direction,
@@ -62,19 +71,8 @@ module.exports = {
         const resp = await octokit.request(`GET /user/starred?${queryStr}`);
 
         const { link } = resp.headers;
-        let hasNextPage = false;
 
-        if (link) {
-          const linksArray = link.split(',');
-          // eslint-disable-next-line no-restricted-syntax
-          for (const elem of linksArray) {
-            const linkArray = elem.split(';');
-            if (linkArray.length > 1 && linkArray[1].includes('rel="next"')) {
-              hasNextPage = true;
-              break;
-            }
-          }
-        }
+        const hasNextPage = checkForNextPage(link);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -89,9 +87,8 @@ module.exports = {
   ) =>
     new Promise(async (resolve, reject) => {
       try {
-        const octokit = new Octokit({
-          auth: `${accessToken}`,
-        });
+        const octokit = createOctokit(accessToken);
+
         const obj = {
           sort,
           page,
@@ -116,19 +113,8 @@ module.exports = {
         );
 
         const { link } = resp.headers;
-        let hasNextPage = false;
 
-        if (link) {
-          const linksArray = link.split(',');
-          // eslint-disable-next-line no-restricted-syntax
-          for (const elem of linksArray) {
-            const linkArray = elem.split(';');
-            if (linkArray.length > 1 && linkArray[1].includes('rel="next"')) {
-              hasNextPage = true;
-              break;
-            }
-          }
-        }
+        const hasNextPage = checkForNextPage(link);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -140,9 +126,8 @@ module.exports = {
   searchPullRequests: async (accessToken, { owner, repo, page, per_page }) =>
     new Promise(async (resolve, reject) => {
       try {
-        const octokit = new Octokit({
-          auth: `${accessToken}`,
-        });
+        const octokit = createOctokit(accessToken);
+
         const queryStr = querystring.stringify({
           page,
           per_page,
@@ -156,19 +141,8 @@ module.exports = {
         );
 
         const { link } = resp.headers;
-        let hasNextPage = false;
 
-        if (link) {
-          const linksArray = link.split(',');
-          // eslint-disable-next-line no-restricted-syntax
-          for (const elem of linksArray) {
-            const linkArray = elem.split(';');
-            if (linkArray.length > 1 && linkArray[1].includes('rel="next"')) {
-              hasNextPage = true;
-              break;
-            }
-          }
-        }
+        const hasNextPage = checkForNextPage(link);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -180,9 +154,7 @@ module.exports = {
   starRepo: async (accessToken, { owner, repo }) =>
     new Promise(async (resolve, reject) => {
       try {
-        const octokit = new Octokit({
-          auth: `${accessToken}`,
-        });
+        const octokit = createOctokit(accessToken);
 
         const resp = await octokit.request('PUT /user/starred/{owner}/{repo}', {
           owner,
@@ -199,9 +171,7 @@ module.exports = {
   unstarRepo: async (accessToken, { owner, repo }) =>
     new Promise(async (resolve, reject) => {
       try {
-        const octokit = new Octokit({
-          auth: `${accessToken}`,
-        });
+        const octokit = createOctokit(accessToken);
 
         const resp = await octokit.request(
           'DELETE /user/starred/{owner}/{repo}',
