@@ -1,9 +1,7 @@
 const querystring = require('querystring');
 const { Octokit } = require('@octokit/core');
 
-let hasNextPage = false;
-
-const pagination = (link) => {
+const pagination = (link, hasNextPage) => {
   if (link) {
     const linksArray = link.split(',');
     // eslint-disable-next-line no-restricted-syntax
@@ -46,8 +44,9 @@ module.exports = {
         );
 
         const { link } = resp.headers;
+        let hasNextPage = false;
 
-        hasNextPage = pagination(link);
+        hasNextPage = pagination(link, hasNextPage);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -74,8 +73,9 @@ module.exports = {
         const resp = await octokit.request(`GET /user/starred?${queryStr}`);
 
         const { link } = resp.headers;
+        let hasNextPage = false;
 
-        hasNextPage = pagination(link);
+        hasNextPage = pagination(link, hasNextPage);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -116,8 +116,9 @@ module.exports = {
         );
 
         const { link } = resp.headers;
+        let hasNextPage = false;
 
-        hasNextPage = pagination(link);
+        hasNextPage = pagination(link, hasNextPage);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
@@ -144,8 +145,9 @@ module.exports = {
         );
 
         const { link } = resp.headers;
+        let hasNextPage = false;
 
-        hasNextPage = pagination(link);
+        hasNextPage = pagination(link, hasNextPage);
 
         resolve({ data: resp.data, hasNextPage });
       } catch (error) {
