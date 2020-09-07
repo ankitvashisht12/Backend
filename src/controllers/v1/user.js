@@ -11,6 +11,28 @@ module.exports = {
     res.json({ data: user });
   }),
 
+  getProfiles: create(async (req, res) => {
+    const { page = 1, per_page = 10 } = req.query;
+
+    const users = await User.find({})
+      .select(User.getProfileFields().join(' '))
+      // eslint-disable-next-line camelcase
+      .limit(per_page * 1)
+      // eslint-disable-next-line camelcase
+      .skip((page - 1) * per_page);
+
+    const count = await User.countDocuments();
+
+    res.json({
+      data: {
+        // eslint-disable-next-line camelcase
+        totalPages: Math.ceil(count / per_page),
+        currentPage: page,
+        users,
+      },
+    });
+  }),
+
   updateProfile: create(
     async (req, res) => {
       // eslint-disable-next-line object-curly-newline
