@@ -8,5 +8,5 @@ tidelift: # Replace with a single Tidelift platform-name/package-name e.g., npm/
 community_bridge: # Replace with a single Community Bridge project-name e.g., cloud-foundry
 liberapay: # Replace with a single Liberapay username
 otechie: # Replace with a single Otechie username
-issuehunt: https://issuehunt.io/o/opensoucecode
-custom: ['https://paytm.me/q5ZP-KI', 'https://www.paypal.com/paypalme/opensourcecode']
+issuehunt: opensoucecode
+custom: ['https://paytm.me/q5ZP-KI', 'https://www.paypal.com/paypalme/opensourcecode', 'https://opencollective.com/open-source-code']
