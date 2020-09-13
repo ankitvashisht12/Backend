@@ -5,9 +5,9 @@ module.exports = {
   getDiscussionById: create(async (req, res) => {
     const { id } = req.params;
 
-    const discussion = await Discussion.findById(id).select(
-      Discussion.getDiscussionFields().join(' '),
-    );
+    const discussion = await Discussion.findById(id)
+      .populate('userId', 'name profileImage title role')
+      .select(Discussion.getDiscussionFields().join(' '));
 
     res.json({ data: discussion });
   }),
