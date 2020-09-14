@@ -6,7 +6,7 @@ module.exports = {
     const { id } = req.params;
 
     const discussion = await Discussion.findById(id)
-      .populate('userId', 'name profileImage title role')
+      .populate('userId', Discussion.getUserFields().join(' '))
       .select(Discussion.getDiscussionFields().join(' '));
 
     res.json({ data: discussion });
