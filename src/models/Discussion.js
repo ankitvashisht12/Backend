@@ -24,10 +24,6 @@ DiscussionSchema.statics.getDiscussionFields = function () {
   return ['_id', 'question', 'userId', 'date', 'name', 'repository'];
 };
 
-DiscussionSchema.statics.getUserFields = function () {
-  return ['_id', 'name', 'profileImage'];
-};
-
 const Discussion = mongoose.model('Discussion', DiscussionSchema);
 
 module.exports = Discussion;
