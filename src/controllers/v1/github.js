@@ -34,6 +34,17 @@ module.exports = {
     },
   ),
 
+  getRepo: create(async (req, res) => {
+    const { owner, repo } = req.params;
+
+    const resp = await github.getRepo(req.accessToken, {
+      owner,
+      repo,
+    });
+
+    res.json(resp);
+  }),
+
   getStarredRepos: create(async (req, res) => {
     const {
       sort = 'created ',
