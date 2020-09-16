@@ -18,14 +18,28 @@ module.exports = {
   getComments: create(async (req, res) => {
     // eslint-disable-next-line camelcase
     const discussion_id = req.params;
+    const { page = 1, per_page = 10 } = req.query;
 
     const discussionComments = await DiscussionComment.find({
       discussionId: discussion_id,
     })
       .populate('userId', User.getUserIdFields().join(' '))
-      .select(DiscussionComment.getDiscussionCommentFields().join(' '));
+      .select(DiscussionComment.getDiscussionCommentFields().join(' '))
+      // eslint-disable-next-line camelcase
+      .limit(per_page * 1)
+      // eslint-disable-next-line camelcase
+      .skip((page - 1) * per_page);
 
-    res.json({ data: discussionComments });
+    const count = await User.countDocuments();
+
+    res.json({
+      data: {
+        // eslint-disable-next-line camelcase
+        totalPages: Math.ceil(count / per_page),
+        currentPage: page,
+        discussionComments,
+      },
+    });
   }),
 
   postDiscussion: create(
