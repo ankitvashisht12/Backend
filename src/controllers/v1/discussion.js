@@ -4,6 +4,14 @@ const Discussion = require('../../models/Discussion');
 const validators = require('../../validators/discussion');
 
 module.exports = {
+  getDiscussions: create(async (req, res) => {
+    const discussions = await Discussion.find({})
+      .populate('userId', User.getUserIdFields().join(' '))
+      .select(Discussion.getDiscussionFields().join(' '));
+
+    res.json({ data: discussions });
+  }),
+
   getDiscussionById: create(async (req, res) => {
     const { id } = req.params;
 
