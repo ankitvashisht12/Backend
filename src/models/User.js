@@ -70,6 +70,10 @@ UserSchema.statics.getProfileFields = function () {
   return ['_id', 'name', 'profileImage', 'about', 'title', 'skills', 'socials'];
 };
 
+UserSchema.statics.getUserIdFields = function () {
+  return ['_id', 'name', 'profileImage'];
+};
+
 const User = mongoose.model('User', UserSchema);
 
 module.exports = User;
