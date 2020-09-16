@@ -15,7 +15,7 @@ module.exports = {
       // eslint-disable-next-line camelcase
       .skip((page - 1) * per_page);
 
-    const count = await User.countDocuments();
+    const count = await Discussion.countDocuments();
 
     res.json({
       data: {
