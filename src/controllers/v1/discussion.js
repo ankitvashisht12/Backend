@@ -1,6 +1,7 @@
 const create = require('../create');
 const User = require('../../models/User');
 const Discussion = require('../../models/Discussion');
+const DiscussionComment = require('../../models/DiscussionComment');
 const validators = require('../../validators/discussion');
 
 module.exports = {
@@ -12,6 +13,19 @@ module.exports = {
       .select(Discussion.getDiscussionFields().join(' '));
 
     res.json({ data: discussion });
+  }),
+
+  getComments: create(async (req, res) => {
+    // eslint-disable-next-line camelcase
+    const discussion_id = req.params;
+
+    const discussionComments = await DiscussionComment.find({
+      discussionId: discussion_id,
+    })
+      .populate('userId', User.getUserIdFields().join(' '))
+      .select(DiscussionComment.getDiscussionCommentFields().join(' '));
+
+    res.json({ data: discussionComments });
   }),
 
   postDiscussion: create(
