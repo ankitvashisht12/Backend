@@ -17,7 +17,7 @@ module.exports = {
 
   getComments: create(async (req, res) => {
     // eslint-disable-next-line camelcase
-    const discussion_id = req.params;
+    const { discussion_id } = req.params;
     const { page = 1, per_page = 10 } = req.query;
 
     const discussionComments = await DiscussionComment.find({
@@ -30,7 +30,9 @@ module.exports = {
       // eslint-disable-next-line camelcase
       .skip((page - 1) * per_page);
 
-    const count = await User.countDocuments();
+    const count = await DiscussionComment.find({
+      discussionId: discussion_id,
+    }).countDocuments();
 
     res.json({
       data: {
