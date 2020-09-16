@@ -3,7 +3,6 @@ const User = require('../../models/User');
 const Discussion = require('../../models/Discussion');
 const DiscussionComment = require('../../models/DiscussionComment');
 const validators = require('../../validators/discussion');
-const DiscussionComment = require('../../models/DiscussionComment');
 
 module.exports = {
   getDiscussionById: create(async (req, res) => {
