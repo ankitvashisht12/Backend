@@ -7,4 +7,11 @@ module.exports = {
       .isString()
       .withMessage('Repository ID should be a string'),
   ],
+  postComment: [
+    body('comment').isString().notEmpty().withMessage('Comment is required'),
+    body('discussionId')
+      .isMongoId()
+      .notEmpty()
+      .withMessage('discussionId is required'),
+  ],
 };
