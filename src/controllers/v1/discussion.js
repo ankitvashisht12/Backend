@@ -1,8 +1,8 @@
 const create = require('../create');
 const User = require('../../models/User');
 const Discussion = require('../../models/Discussion');
-const validators = require('../../validators/discussion');
 const DiscussionComment = require('../../models/DiscussionComment');
+const validators = require('../../validators/discussion');
 
 module.exports = {
   getDiscussions: create(async (req, res) => {
@@ -36,6 +36,35 @@ module.exports = {
       .select(Discussion.getDiscussionFields().join(' '));
 
     res.json({ data: discussion });
+  }),
+
+  getComments: create(async (req, res) => {
+    // eslint-disable-next-line camelcase
+    const { discussion_id } = req.params;
+    const { page = 1, per_page = 10 } = req.query;
+
+    const discussionComments = await DiscussionComment.find({
+      discussionId: discussion_id,
+    })
+      .populate('userId', User.getUserIdFields().join(' '))
+      .select(DiscussionComment.getDiscussionCommentFields().join(' '))
+      // eslint-disable-next-line camelcase
+      .limit(per_page * 1)
+      // eslint-disable-next-line camelcase
+      .skip((page - 1) * per_page);
+
+    const count = await DiscussionComment.find({
+      discussionId: discussion_id,
+    }).countDocuments();
+
+    res.json({
+      data: {
+        // eslint-disable-next-line camelcase
+        totalPages: Math.ceil(count / per_page),
+        currentPage: page,
+        discussionComments,
+      },
+    });
   }),
 
   postDiscussion: create(
