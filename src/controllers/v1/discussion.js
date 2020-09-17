@@ -5,6 +5,29 @@ const validators = require('../../validators/discussion');
 const DiscussionComment = require('../../models/DiscussionComment');
 
 module.exports = {
+  getDiscussions: create(async (req, res) => {
+    const { page = 1, per_page = 10 } = req.query;
+
+    const discussions = await Discussion.find({})
+      .populate('userId', User.getUserIdFields().join(' '))
+      .select(Discussion.getDiscussionFields().join(' '))
+      // eslint-disable-next-line camelcase
+      .limit(per_page * 1)
+      // eslint-disable-next-line camelcase
+      .skip((page - 1) * per_page);
+
+    const count = await Discussion.countDocuments();
+
+    res.json({
+      data: {
+        // eslint-disable-next-line camelcase
+        totalPages: Math.ceil(count / per_page),
+        currentPage: page,
+        discussions,
+      },
+    });
+  }),
+
   getDiscussionById: create(async (req, res) => {
     const { id } = req.params;
 
