@@ -9,4 +9,18 @@ module.exports = {
       .notEmpty()
       .withMessage('Description is required'),
   ],
+  updateSkillTestQuestion: [
+    body('question')
+      .isString()
+      .optional()
+      .withMessage('Question should be a String'),
+    body('options')
+      .isArray()
+      .optional()
+      .withMessage('Options should be an Array'),
+    body('correctIndex')
+      .isNumeric()
+      .optional()
+      .withMessage('Correct Index should be a number'),
+  ],
 };

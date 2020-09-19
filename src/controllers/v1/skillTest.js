@@ -24,4 +24,29 @@ module.exports = {
       },
     },
   ),
+
+  updateSkillTestQuestion: create(
+    async (req, res) => {
+      const { questionId } = req.params;
+      const { question, options, correctIndex } = req.body;
+
+      const skillTestQuestion = SkillTest.findByIdAndUpdate(
+        questionId,
+        {
+          question,
+          options,
+          correctIndex,
+        },
+        { new: true },
+      );
+
+      res.json({ data: skillTestQuestion });
+    },
+    {
+      validation: {
+        validators: validators.updateSkillTestQuestion,
+        throwError: true,
+      },
+    },
+  ),
 };
