@@ -50,6 +50,31 @@ module.exports = {
     },
   ),
 
+  updateSkillTest: create(
+    async (req, res) => {
+      const { id } = req.params;
+      const { name, image, description } = req.body;
+
+      const skillTest = await SkillTest.findByIdAndUpdate(
+        id,
+        {
+          name,
+          image,
+          description,
+        },
+        { new: true },
+      );
+
+      res.json({ data: skillTest });
+    },
+    {
+      validation: {
+        validators: validators.updateSkillTest,
+        throwError: true,
+      },
+    },
+  ),
+
   updateSkillTestQuestion: create(
     async (req, res) => {
       const { questionId } = req.params;
