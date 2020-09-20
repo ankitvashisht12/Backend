@@ -1,5 +1,6 @@
 const create = require('../create');
 const SkillTest = require('../../models/SkillTest');
+const SkillTestQuestion = require('../../models/SkillTestQuestion');
 const validators = require('../../validators/skillTest');
 
 module.exports = {
@@ -20,6 +21,30 @@ module.exports = {
     {
       validation: {
         validators: validators.postSkillTest,
+        throwError: true,
+      },
+    },
+  ),
+
+  postSkillTestQuestion: create(
+    async (req, res) => {
+      const { testId } = req.params;
+      const { question, options, correctIndex } = req.body;
+
+      const newSkillTestQuestion = new SkillTestQuestion({
+        question,
+        options,
+        correctIndex,
+        testId,
+      });
+
+      const skillTestQuestion = await newSkillTestQuestion.save();
+
+      res.json({ data: skillTestQuestion });
+    },
+    {
+      validation: {
+        validators: validators.postSkillTestQuestion,
         throwError: true,
       },
     },

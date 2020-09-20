@@ -12,5 +12,6 @@ router.patch(
   authenticator(ROLES.ADMIN),
   controller.updateSkillTestQuestion,
 );
+router.patch('/:id', authenticator(ROLES.ADMIN), controller.updateSkillTest);
 
 module.exports = router;
