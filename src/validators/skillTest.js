@@ -30,14 +30,6 @@ module.exports = {
       .isArray()
       .optional()
       .withMessage('Options should be an Array'),
-    body('correctIndex')
-      .isNumeric()
-      .custom(
-        (correctIndex, { req }) =>
-          correctIndex >= 0 && correctIndex < req.body.options.length,
-      )
-      .optional()
-      .withMessage('Correct Index should be a Number'),
   ],
   updateSkillTest: [
     body('name').isString().optional().withMessage('Name should be a String'),
