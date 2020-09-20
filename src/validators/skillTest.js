@@ -20,7 +20,11 @@ module.exports = {
       .withMessage('Options should be an Array'),
     body('correctIndex')
       .isNumeric()
+      .custom(
+        (correctIndex, { req }) =>
+          correctIndex >= 0 && correctIndex < req.body.options.length,
+      )
       .optional()
-      .withMessage('Correct Index should be a number'),
+      .withMessage('Correct Index should be a Number'),
   ],
 };
