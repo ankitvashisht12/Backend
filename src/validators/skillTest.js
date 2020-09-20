@@ -9,6 +9,18 @@ module.exports = {
       .notEmpty()
       .withMessage('Description is required'),
   ],
+  postSkillTestQuestion: [
+    body('question').isString().notEmpty().withMessage('Question is required'),
+    body('options').isArray().notEmpty().withMessage('Options is required'),
+    body('correctIndex')
+      .isNumeric()
+      .custom(
+        (correctIndex, { req }) =>
+          correctIndex >= 0 && correctIndex < req.body.options.length,
+      )
+      .notEmpty()
+      .withMessage('Correct Index is required'),
+  ],
   updateSkillTest: [
     body('name').isString().optional().withMessage('Name should be a String'),
     body('image').isString().optional().withMessage('Image should be a String'),
