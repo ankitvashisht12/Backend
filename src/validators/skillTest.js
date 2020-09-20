@@ -14,6 +14,10 @@ module.exports = {
     body('options').isArray().notEmpty().withMessage('Options is required'),
     body('correctIndex')
       .isNumeric()
+      .custom(
+        (correctIndex, { req }) =>
+          correctIndex >= 0 && correctIndex < req.body.options.length,
+      )
       .notEmpty()
       .withMessage('Correct Index is required'),
   ],
