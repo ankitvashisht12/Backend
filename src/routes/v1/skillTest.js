@@ -18,5 +18,10 @@ router.patch(
   controller.updateSkillTestQuestion,
 );
 router.patch('/:id', authenticator(ROLES.ADMIN), controller.updateSkillTest);
+router.delete(
+  '/publish/:testId',
+  authenticator(ROLES.ADMIN),
+  controller.unpublishSkillTest,
+);
 
 module.exports = router;

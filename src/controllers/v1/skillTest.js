@@ -108,4 +108,18 @@ module.exports = {
       inputs: ['question', 'options', 'correctIndex'],
     },
   ),
+
+  unpublishSkillTest: create(async (req, res) => {
+    const { testId } = req.params;
+
+    await SkillTest.findByIdAndUpdate(
+      testId,
+      {
+        isPublished: false,
+      },
+      { new: true },
+    );
+
+    res.status(200).send('Skill Test unpublished successfully');
+  }),
 };
