@@ -28,5 +28,10 @@ router.delete(
   authenticator(ROLES.ADMIN),
   controller.deleteSkillTestQuestion,
 );
+router.delete(
+  '/publish/:testId',
+  authenticator(ROLES.ADMIN),
+  controller.unpublishSkillTest,
+);
 
 module.exports = router;
