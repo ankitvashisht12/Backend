@@ -122,4 +122,12 @@ module.exports = {
 
     res.status(200).send('Skill Test published successfully');
   }),
+
+  deleteSkillTestQuestion: create(async (req, res) => {
+    const { questionId } = req.params;
+
+    await SkillTestQuestion.findByIdAndRemove(questionId);
+
+    res.status(200).send('Skill Test Question removed successfully');
+  }),
 };
