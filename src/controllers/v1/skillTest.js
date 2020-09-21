@@ -109,6 +109,14 @@ module.exports = {
     },
   ),
 
+  deleteSkillTestQuestion: create(async (req, res) => {
+    const { questionId } = req.params;
+
+    await SkillTestQuestion.findByIdAndRemove(questionId);
+
+    res.status(200).send('Skill Test Question removed successfully');
+  }),
+
   unpublishSkillTest: create(async (req, res) => {
     const { testId } = req.params;
 
