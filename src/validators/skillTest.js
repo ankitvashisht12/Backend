@@ -21,6 +21,16 @@ module.exports = {
       .notEmpty()
       .withMessage('Correct Index is required'),
   ],
+  updateSkillTestQuestion: [
+    body('question')
+      .isString()
+      .optional()
+      .withMessage('Question should be a String'),
+    body('options')
+      .isArray()
+      .optional()
+      .withMessage('Options should be an Array'),
+  ],
   updateSkillTest: [
     body('name').isString().optional().withMessage('Name should be a String'),
     body('image').isString().optional().withMessage('Image should be a String'),

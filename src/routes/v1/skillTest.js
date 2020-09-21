@@ -12,6 +12,11 @@ router.post(
   authenticator(ROLES.ADMIN),
   controller.postSkillTestQuestion,
 );
+router.patch(
+  '/question/:questionId',
+  authenticator(ROLES.ADMIN),
+  controller.updateSkillTestQuestion,
+);
 router.patch('/:id', authenticator(ROLES.ADMIN), controller.updateSkillTest);
 
 module.exports = router;

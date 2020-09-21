@@ -74,4 +74,38 @@ module.exports = {
       },
     },
   ),
+
+  updateSkillTestQuestion: create(
+    async (req, res) => {
+      const { questionId } = req.params;
+
+      const { options, correctIndex } = req.body;
+      let optionsLength = options ? options.length : 0;
+
+      const skillTestQuestion = await SkillTestQuestion.findById(questionId);
+
+      if (!optionsLength) {
+        optionsLength = skillTestQuestion.options.length;
+      }
+
+      if (correctIndex && (correctIndex < 0 || correctIndex >= optionsLength)) {
+        return res.status(400).send('Bad request');
+      }
+
+      Object.keys(res.locals.inputBody).forEach((key) => {
+        skillTestQuestion[key] = res.locals.inputBody[key];
+      });
+
+      await skillTestQuestion.save();
+
+      return res.json({ data: skillTestQuestion });
+    },
+    {
+      validation: {
+        validators: validators.updateSkillTestQuestion,
+        throwError: true,
+      },
+      inputs: ['question', 'options', 'correctIndex'],
+    },
+  ),
 };
