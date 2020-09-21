@@ -8,6 +8,11 @@ const ROLES = require('../../config/roles');
 
 router.post('/', authenticator(ROLES.ADMIN), controller.postSkillTest);
 router.post(
+  '/publish/:testId',
+  authenticator(ROLES.ADMIN),
+  controller.publishSkillTest,
+);
+router.post(
   '/question/:testId',
   authenticator(ROLES.ADMIN),
   controller.postSkillTestQuestion,
