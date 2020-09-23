@@ -33,5 +33,6 @@ router.delete(
   authenticator(ROLES.ADMIN),
   controller.unpublishSkillTest,
 );
+router.delete('/:id', authenticator(ROLES.ADMIN), controller.deleteSkillTest);
 
 module.exports = router;
