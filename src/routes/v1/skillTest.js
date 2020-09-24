@@ -9,7 +9,7 @@ const ROLES = require('../../config/roles');
 router.get('/', authenticator(), controller.getSkillTests);
 router.get('/:testId', authenticator(), controller.getSkillTestQuestions);
 router.post('/', authenticator(ROLES.ADMIN), controller.postSkillTest);
-router.post(
+router.patch(
   '/publish/:testId',
   authenticator(ROLES.ADMIN),
   controller.publishSkillTest,

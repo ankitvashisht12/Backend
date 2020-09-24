@@ -110,17 +110,14 @@ module.exports = {
   updateSkillTest: create(
     async (req, res) => {
       const { id } = req.params;
-      const { name, image, description } = req.body;
 
-      const skillTest = await SkillTest.findByIdAndUpdate(
-        id,
-        {
-          name,
-          image,
-          description,
-        },
-        { new: true },
-      );
+      const skillTest = await SkillTest.findById(id);
+
+      Object.keys(res.locals.inputBody).forEach((key) => {
+        skillTest[key] = res.locals.inputBody[key];
+      });
+
+      await skillTest.save();
 
       res.json({ data: skillTest });
     },
@@ -129,6 +126,7 @@ module.exports = {
         validators: validators.updateSkillTest,
         throwError: true,
       },
+      inputs: ['name', 'image', 'description'],
     },
   ),
 
