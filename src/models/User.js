@@ -67,7 +67,16 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.statics.getProfileFields = function () {
-  return ['_id', 'name', 'profileImage', 'about', 'title', 'skills', 'socials'];
+  return [
+    '_id',
+    'name',
+    'profileImage',
+    'about',
+    'title',
+    'role',
+    'skills',
+    'socials',
+  ];
 };
 
 UserSchema.statics.getUserIdFields = function () {
