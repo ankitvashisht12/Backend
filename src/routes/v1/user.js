@@ -1,4 +1,5 @@
 const express = require('express');
+const upload = require('../../middlewares/imageUpload');
 
 const router = express.Router();
 
@@ -15,5 +16,11 @@ router.get(
 router.get('/profile', authenticator(), controller.getProfile);
 router.patch('/profile', authenticator(), controller.updateProfile);
 router.patch('/socials', authenticator(), controller.updateSocials);
+router.post(
+  '/avatar',
+  authenticator(),
+  upload.single('avatar'),
+  controller.updateAvatar,
+);
 
 module.exports = router;

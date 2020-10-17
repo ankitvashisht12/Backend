@@ -88,4 +88,25 @@ module.exports = {
       inputs: ['website', 'github', 'linkedin', 'twitter'],
     },
   ),
+
+  updateAvatar: create(async (req, res) => {
+    if (req.fileValidationError) {
+      return res.status(400).json({ message: req.fileValidationError });
+    }
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file received!' });
+    }
+
+    const imagePath = req.file.path.split('/').slice(1).join('/');
+
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      {
+        profileImage: imagePath,
+      },
+      { new: true },
+    ).select(User.getProfileFields().join(' '));
+
+    return res.json({ data: user });
+  }),
 };
