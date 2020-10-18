@@ -9,24 +9,21 @@ const assignProperties = (from, to) =>
 
 module.exports = {
   getSkillTests: create(async (req, res) => {
-    const { page = 1, per_page = 10, isPublished } = req.query;
+    const { page = 1, per_page: perPage = 10, isPublished } = req.query;
 
     const filterObj = {
       isPublished: isPublished === 'true' && req.user.role === ROLES.ADMIN,
     };
 
     const skillTests = await SkillTest.find(filterObj)
-      // eslint-disable-next-line camelcase
-      .limit(per_page * 1)
-      // eslint-disable-next-line camelcase
-      .skip((page - 1) * per_page);
+      .limit(perPage * 1)
+      .skip((page - 1) * perPage);
 
     const count = await SkillTest.countDocuments();
 
     res.json({
       data: {
-        // eslint-disable-next-line camelcase
-        totalPages: Math.ceil(count / per_page),
+        totalPages: Math.ceil(count / perPage),
         currentPage: page,
         skillTests,
       },
@@ -35,7 +32,7 @@ module.exports = {
 
   getSkillTestQuestions: create(async (req, res) => {
     const { testId } = req.params;
-    const { page = 1, per_page = 10 } = req.query;
+    const { page = 1, per_page: perPage = 10 } = req.query;
 
     const skillTest = await SkillTest.findById(testId);
 
@@ -46,17 +43,14 @@ module.exports = {
     }
 
     const skillTestQuestions = await SkillTestQuestion.find({ testId })
-      // eslint-disable-next-line camelcase
-      .limit(per_page * 1)
-      // eslint-disable-next-line camelcase
-      .skip((page - 1) * per_page);
+      .limit(perPage * 1)
+      .skip((page - 1) * perPage);
 
     const count = await SkillTestQuestion.find({ testId }).countDocuments();
 
     return res.json({
       data: {
-        // eslint-disable-next-line camelcase
-        totalPages: Math.ceil(count / per_page),
+        totalPages: Math.ceil(count / perPage),
         currentPage: page,
         skillTestQuestions,
       },

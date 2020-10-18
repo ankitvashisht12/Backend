@@ -22,21 +22,18 @@ module.exports = {
   }),
 
   getProfiles: create(async (req, res) => {
-    const { page = 1, per_page = 10 } = req.query;
+    const { page = 1, per_page: perPage = 10 } = req.query;
 
     const users = await User.find({})
       .select(User.getProfileFields().join(' '))
-      // eslint-disable-next-line camelcase
-      .limit(per_page * 1)
-      // eslint-disable-next-line camelcase
-      .skip((page - 1) * per_page);
+      .limit(perPage * 1)
+      .skip((page - 1) * perPage);
 
     const count = await User.countDocuments();
 
     res.json({
       data: {
-        // eslint-disable-next-line camelcase
-        totalPages: Math.ceil(count / per_page),
+        totalPages: Math.ceil(count / perPage),
         currentPage: page,
         users,
       },

@@ -8,22 +8,19 @@ const ReportDiscussionComment = require('../../models/ReportDiscussionComment');
 
 module.exports = {
   getDiscussions: create(async (req, res) => {
-    const { page = 1, per_page = 10 } = req.query;
+    const { page = 1, per_page: perPage = 10 } = req.query;
 
     const discussions = await Discussion.find({})
       .populate('userId', User.getUserIdFields().join(' '))
       .select(Discussion.getDiscussionFields().join(' '))
-      // eslint-disable-next-line camelcase
-      .limit(per_page * 1)
-      // eslint-disable-next-line camelcase
-      .skip((page - 1) * per_page);
+      .limit(perPage * 1)
+      .skip((page - 1) * perPage);
 
     const count = await Discussion.countDocuments();
 
     res.json({
       data: {
-        // eslint-disable-next-line camelcase
-        totalPages: Math.ceil(count / per_page),
+        totalPages: Math.ceil(count / perPage),
         currentPage: page,
         discussions,
       },
@@ -42,27 +39,24 @@ module.exports = {
 
   getComments: create(async (req, res) => {
     // eslint-disable-next-line camelcase
-    const { discussion_id } = req.params;
-    const { page = 1, per_page = 10 } = req.query;
+    const { discussion_id: discussionId } = req.params;
+    const { page = 1, per_page: perPage = 10 } = req.query;
 
     const discussionComments = await DiscussionComment.find({
-      discussionId: discussion_id,
+      discussionId,
     })
       .populate('userId', User.getUserIdFields().join(' '))
       .select(DiscussionComment.getDiscussionCommentFields().join(' '))
-      // eslint-disable-next-line camelcase
-      .limit(per_page * 1)
-      // eslint-disable-next-line camelcase
-      .skip((page - 1) * per_page);
+      .limit(perPage * 1)
+      .skip((page - 1) * perPage);
 
     const count = await DiscussionComment.find({
-      discussionId: discussion_id,
+      discussionId,
     }).countDocuments();
 
     res.json({
       data: {
-        // eslint-disable-next-line camelcase
-        totalPages: Math.ceil(count / per_page),
+        totalPages: Math.ceil(count / perPage),
         currentPage: page,
         discussionComments,
       },
