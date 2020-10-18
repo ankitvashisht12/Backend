@@ -4,14 +4,16 @@ const SkillTestQuestion = require('../../models/SkillTestQuestion');
 const validators = require('../../validators/skillTest');
 const ROLES = require('../../config/roles');
 
+const assignProperties = (from, to) =>
+  Object.keys(from).forEach((key) => to.setAttribute(key, from[key]));
+
 module.exports = {
   getSkillTests: create(async (req, res) => {
     const { page = 1, per_page = 10, isPublished } = req.query;
 
-    const filterObj =
-      isPublished && isPublished === 'true' && req.user.role === ROLES.ADMIN
-        ? { isPublished: true }
-        : { isPublished: false };
+    const filterObj = {
+      isPublished: isPublished === 'true' && req.user.role === ROLES.ADMIN,
+    };
 
     const skillTests = await SkillTest.find(filterObj)
       // eslint-disable-next-line camelcase
@@ -147,9 +149,7 @@ module.exports = {
         return res.status(400).send('Bad request');
       }
 
-      Object.keys(res.locals.inputBody).forEach((key) => {
-        skillTestQuestion[key] = res.locals.inputBody[key];
-      });
+      assignProperties(res.locals.inputBody, skillTestQuestion);
 
       await skillTestQuestion.save();
 
