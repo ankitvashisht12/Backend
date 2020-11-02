@@ -2,11 +2,11 @@
 
 Contributing to open source can be a rewarding way to learn, teach, and build experience in just about any skill you can imagine.
 
-<p align="center">
+<!-- <p align="center">
    <a href="https://github.com/CodeTrophs/codetrophs/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/CodeTrophs/Backend"></a>
    <a href="https://github.com/fnplus/footsteps-app/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/CodeTrophs/Backend"></a>
    <a href="https://github.com/fnplus/footsteps-app/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/CodeTrophs/Backend"></a>
-</p>
+</p> -->
 
 
 [![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
