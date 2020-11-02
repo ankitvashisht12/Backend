@@ -1,11 +1,11 @@
-# Open Source Code 
+# CodeTrophs 
 
 Contributing to open source can be a rewarding way to learn, teach, and build experience in just about any skill you can imagine.
 
 <p align="center">
-   <a href="https://github.com/OpenSouceCode/opensourcecode/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/OpenSouceCode/Backend"></a>
-   <a href="https://github.com/fnplus/footsteps-app/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/OpenSouceCode/Backend"></a>
-   <a href="https://github.com/fnplus/footsteps-app/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/OpenSouceCode/Backend"></a>
+   <a href="https://github.com/CodeTrophs/codetrophs/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/CodeTrophs/Backend"></a>
+   <a href="https://github.com/fnplus/footsteps-app/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/CodeTrophs/Backend"></a>
+   <a href="https://github.com/fnplus/footsteps-app/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/CodeTrophs/Backend"></a>
 </p>
 
 
@@ -22,7 +22,7 @@ Contributing to open source can be a rewarding way to learn, teach, and build ex
 **Fork & Clone the repo**
 
 ```shell
- git clone https://github.com/OpenSouceCode/Backend.git
+ git clone https://github.com/CodeTrophs/Backend.git
  ```
  **Install node dependencies**
  ```shell
@@ -45,7 +45,7 @@ Navigate into your new site’s directory and start it up.
 
    Your site is now running at `http://localhost:3000/api/v1/status`!
    
-Open the `opensourcecode` directory in your code editor of choice and edit files under `src`. Save your changes and the browser will update in real time!
+Open the `codetrophs` directory in your code editor of choice and edit files under `src`. Save your changes and the browser will update in real time!
 
 **For working on the repository, you'll have to follow these steps:**
 
