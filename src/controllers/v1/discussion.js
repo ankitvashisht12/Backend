@@ -3,8 +3,8 @@ const User = require('../../models/User');
 const Discussion = require('../../models/Discussion');
 const DiscussionComment = require('../../models/DiscussionComment');
 const validators = require('../../validators/discussion');
-const ReportDiscussion = require('../../models/ReportDiscussion');
-const ReportDiscussionComment = require('../../models/ReportDiscussionComment');
+const ReportDiscussionDetails = require('../../models/ReportDiscussionDetails');
+const ReportDiscussionCommentDetails = require('../../models/ReportDiscussionCommentDetails');
 
 module.exports = {
   getDiscussions: create(async (req, res) => {
@@ -107,49 +107,51 @@ module.exports = {
     },
   ),
 
-  reportDiscussion: create(
+  reportDiscussionDetails: create(
     async (req, res) => {
       const { reason } = req.body;
       const { discussionId } = req.params;
       const userId = req.user.id;
 
-      const newReportDiscussion = new ReportDiscussion({
+      const newReportDiscussionDetails = new ReportDiscussionDetails({
         reason,
         discussionId,
         userId,
       });
 
-      const reportDiscussion = await newReportDiscussion.save();
+      const reportDiscussionDetails = await newReportDiscussionDetails.save();
 
-      res.json({ data: reportDiscussion });
+      res.json({ data: reportDiscussionDetails });
     },
     {
       validation: {
-        validators: validators.reportDiscussion,
+        validators: validators.reportDiscussionDetails,
         throwError: true,
       },
     },
   ),
 
-  reportDiscussionComment: create(
+  reportDiscussionCommentDetails: create(
     async (req, res) => {
       const { reason } = req.body;
       const discussionCommentId = req.params.commentId;
       const userId = req.user.id;
 
-      const newReportDiscussionComment = new ReportDiscussionComment({
-        reason,
-        discussionCommentId,
-        userId,
-      });
+      const newReportDiscussionCommentDetails = new ReportDiscussionCommentDetails(
+        {
+          reason,
+          discussionCommentId,
+          userId,
+        },
+      );
 
-      const reportDiscussionComment = await newReportDiscussionComment.save();
+      const reportDiscussionCommentDetails = await newReportDiscussionCommentDetails.save();
 
-      res.json({ data: reportDiscussionComment });
+      res.json({ data: reportDiscussionCommentDetails });
     },
     {
       validation: {
-        validators: validators.reportDiscussionComment,
+        validators: validators.reportDiscussionCommentDetails,
         throwError: true,
       },
     },

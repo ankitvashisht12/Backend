@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ReportDiscussionSchema = new mongoose.Schema(
+const ReportDiscussionDetailsSchema = new mongoose.Schema(
   {
     reason: {
       type: String,
@@ -20,9 +20,9 @@ const ReportDiscussionSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-const ReportDiscussion = mongoose.model(
-  'ReportDiscussion',
-  ReportDiscussionSchema,
+const ReportDiscussionDetails = mongoose.model(
+  'ReportDiscussionDetails',
+  ReportDiscussionDetailsSchema,
 );
 
-module.exports = ReportDiscussion;
+module.exports = ReportDiscussionDetails;
