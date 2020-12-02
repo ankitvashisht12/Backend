@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const ReportDiscussionCommentDetailsSchema = new mongoose.Schema(
   {
+    discussionId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
     reason: {
       type: String,
       required: true,
