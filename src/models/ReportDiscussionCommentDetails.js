@@ -4,6 +4,7 @@ const ReportDiscussionCommentDetailsSchema = new mongoose.Schema(
   {
     discussionId: {
       type: mongoose.Schema.Types.ObjectId,
+      ref: 'Discussion',
       required: true,
     },
     reason: {
