@@ -11,6 +11,11 @@ const ReportDiscussionCommentDetailsSchema = new mongoose.Schema(
       ref: 'User',
       required: true,
     },
+    discussionId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Discussion',
+      required: true,
+    },
     discussionCommentId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'DiscussionComment',
