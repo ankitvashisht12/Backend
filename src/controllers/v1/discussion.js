@@ -134,20 +134,33 @@ module.exports = {
   reportDiscussionCommentDetails: create(
     async (req, res) => {
       const { reason } = req.body;
+      const { discussionId } = req.body;
       const discussionCommentId = req.params.commentId;
       const userId = req.user.id;
 
-      const newReportDiscussionCommentDetails = new ReportDiscussionCommentDetails(
+      const hasreportDiscussionCommentDetails = await ReportDiscussionCommentDetails.findOne(
         {
-          reason,
-          discussionCommentId,
           userId,
+          discussionCommentId,
         },
       );
 
-      const reportDiscussionCommentDetails = await newReportDiscussionCommentDetails.save();
+      if (hasreportDiscussionCommentDetails) {
+        res.json({ message: 'Comment already reported' });
+      } else {
+        const newReportDiscussionCommentDetails = new ReportDiscussionCommentDetails(
+          {
+            reason,
+            userId,
+            discussionId,
+            discussionCommentId,
+          },
+        );
 
-      res.json({ data: reportDiscussionCommentDetails });
+        const reportDiscussionCommentDetails = await newReportDiscussionCommentDetails.save();
+
+        res.json({ data: reportDiscussionCommentDetails });
+      }
     },
     {
       validation: {
