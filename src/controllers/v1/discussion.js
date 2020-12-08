@@ -133,9 +133,8 @@ module.exports = {
 
   reportDiscussionCommentDetails: create(
     async (req, res) => {
-      const { reason, discussionId } = req.body;
-
-      const discussionCommentId = req.params.commentId;
+      const { reason } = req.body;
+      const { discussionId, commentId } = req.params;
       const userId = req.user.id;
 
       const hasReportDiscussionCommentDetails = await ReportDiscussionCommentDetails.findOne(
