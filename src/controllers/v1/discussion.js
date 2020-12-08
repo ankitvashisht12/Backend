@@ -141,7 +141,7 @@ module.exports = {
       const hasReportDiscussionCommentDetails = await ReportDiscussionCommentDetails.findOne(
         {
           userId,
-          discussionCommentId,
+          discussionCommentId: commentId,
         },
       );
 
