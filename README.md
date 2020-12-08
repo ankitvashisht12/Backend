@@ -58,3 +58,17 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
 4: Work on the new branch and push the code.
 
 5: Create a PR.
+
+### **Here are the different routes available to use.**
+
+1. ##### **Github routes**
+   * ```GET /v1/discussion/``` - This route lists all the public repositories in the order that they were created.
+      * Request body - null
+      * Response body - 
+         * total pages
+         * Current page (dafault: 1)
+         * discussions
+      * Status code of the response - 200
+      * Query parameters in request (dafault) - 
+         * page: 1
+         * per_page: 10
