@@ -1,26 +1,23 @@
-const mongoose = require('mongoose');
+const mongooes = require('mongoose');
 
-const ReportDiscussionSchema = new mongoose.Schema(
+const ReportDiscussionSchema = new mongooes.Schema(
   {
-    reason: {
-      type: String,
-      required: true,
-    },
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-    },
     discussionId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongooes.Schema.Types.ObjectId,
       ref: 'Discussion',
       required: true,
     },
+    numberOfReports: {
+      type: Number,
+      required: true,
+    },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+  },
 );
 
-const ReportDiscussion = mongoose.model(
+const ReportDiscussion = mongooes.model(
   'ReportDiscussion',
   ReportDiscussionSchema,
 );

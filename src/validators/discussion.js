@@ -14,10 +14,10 @@ module.exports = {
       .notEmpty()
       .withMessage('discussionId is required'),
   ],
-  reportDiscussion: [
+  reportDiscussionDetails: [
     body('reason').isString().notEmpty().withMessage('Reason is required'),
   ],
-  reportDiscussionComment: [
+  reportDiscussionCommentDetails: [
     body('reason').isString().notEmpty().withMessage('Reason is required'),
   ],
 };

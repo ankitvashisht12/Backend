@@ -2,18 +2,18 @@ const mongoose = require('mongoose');
 
 const ReportDiscussionCommentSchema = new mongoose.Schema(
   {
-    reason: {
-      type: String,
-      required: true,
-    },
-    userId: {
+    discussionId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: 'Discussion',
       required: true,
     },
-    discussionCommentId: {
+    commentId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'DiscussionComment',
+      required: true,
+    },
+    numberOfReports: {
+      type: Number,
       required: true,
     },
   },
