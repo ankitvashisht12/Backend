@@ -154,7 +154,7 @@ module.exports = {
           reason,
           userId,
           discussionId,
-          discussionCommentId,
+          discussionCommentId: commentId,
         },
       );
 
