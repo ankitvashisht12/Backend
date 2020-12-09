@@ -61,14 +61,29 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
 
 ### **Here are the different routes available to use.**
 
-1. ##### **Github routes**
-   * ```GET /v1/discussion/``` - This route lists all the public repositories in the order that they were created.
-      * Request body - null
+##### **Github routes**
+   1. ```GET /v1/discussion/``` - This route lists all the public repositories in the order that they were created.
+      * Request body - 
+         ```json
+         {}
+         ```
       * Response body - 
-         * total pages
-         * Current page (dafault: 1)
-         * discussions
-      * Status code of the response - 200
+         ```json
+         {
+          "totalPages": "TOTAL PAGES AVAILABLE",
+          "currentPage": "CURRENT PAGE NUMBER",
+          "discussions": {
+            "question": "QUESTION",
+            "userId": "USER_ID",
+            "repository": "REPOSITORY_NAME"
+          }
+         }
+         ```
+      * Status code of the response - `200`
       * Query parameters in request (dafault) - 
-         * page: 1
-         * per_page: 10
+         ```json
+         {
+            "page": 1,
+            "per_page": 10
+         }
+         ```
