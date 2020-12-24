@@ -113,6 +113,15 @@ module.exports = {
       const { discussionId } = req.params;
       const userId = req.user.id;
 
+      const hasReportDiscussionDetails = await ReportDiscussionDetails.findOne({
+        userId,
+        discussionId,
+      });
+
+      if (hasReportDiscussionDetails) {
+        return res.status(400).json({ message: 'Discussion already reported' });
+      }
+
       const newReportDiscussionDetails = new ReportDiscussionDetails({
         reason,
         discussionId,
@@ -121,7 +130,7 @@ module.exports = {
 
       const reportDiscussionDetails = await newReportDiscussionDetails.save();
 
-      res.json({ data: reportDiscussionDetails });
+      return res.json({ data: reportDiscussionDetails });
     },
     {
       validation: {
