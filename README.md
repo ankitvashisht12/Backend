@@ -131,6 +131,11 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          }
          ```
       * Status code of the response - `200`
+      * Parameters in request url -
+         ```json 
+         {
+            "repoId": "REPOSITORY_ID"
+         }
 
    3. ```GET /v1/discussion/:discussionId/comments``` - This route lists all the comments for particular discussion in the order that they were created.
       * Request body -
@@ -155,6 +160,12 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          {
             "page": 1,
             "per_page": 10
+         }
+         ```
+      * Parameters in request url - 
+         ```json 
+         {
+            "discussionId": "DISCUSSION_ID"
          }
          ```
 
@@ -219,6 +230,12 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
                "message": "DISCUSSION ALREADY REPORTED"
             }
             ```
+      * Parameters in request url - 
+         ```json 
+         {
+            "discussionId": "DISCUSSION_ID"
+         }
+         ```
    7. ```POST /v1/discussion/:discussionId/comment/:commentId``` - This route lets user report particular comment.
       * Request body - 
          ```json
@@ -242,4 +259,11 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
                "message": "COMMENT_ALREADY_REPORTED"
             }
             ```
+      * Parameters in request url - 
+         ```json 
+         {
+            "discussionId": "DISCUSSION_ID",
+            "commentId": "COMMENT_ID"
+         }
+         ```
    
