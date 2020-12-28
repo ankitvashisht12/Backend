@@ -80,7 +80,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          }
          ```
       * Status code of the response - `200`
-      * Query parameters in request (dafault) - 
+      * Query parameters in request (default) - 
          ```json
          {
             "page": 1,
@@ -89,7 +89,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          ```
 
 ##### **Discussion routes**
-   1. ```GET /v1/discussion/``` - This route lists all the discussions in the order that they were created.
+   1. ```GET [PROTECTED ROUTE] /v1/discussion/``` - This route lists all the discussions in the order that they were created.
       * Request body - 
          ```json
          {}
@@ -107,7 +107,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          }
          ```
       * Status code of the response - `200`
-      * Query parameters in request (dafault) - 
+      * Query parameters in request (default) - 
          ```json
          {
             "page": 1,
@@ -115,7 +115,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          }
          ```
 
-   2. ```GET /v1/discussion/:repoId``` - This route lists all the discussions available in the repository in the order that they were created.
+   2. ```GET [PROTECTED ROUTE] /v1/discussion/:repoId``` - This route lists all the discussions available in the repository in the order that they were created.
       * Request body - 
          ```json
          {}
@@ -131,13 +131,13 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          }
          ```
       * Status code of the response - `200`
-      * Parameters in request url -
+      * Route Parameters in request URL -
          ```json 
          {
             "repoId": "REPOSITORY_ID"
          }
 
-   3. ```GET /v1/discussion/:discussionId/comments``` - This route lists all the comments for particular discussion in the order that they were created.
+   3. ```GET [PROTECTED ROUTE] /v1/discussion/:discussion_Id/comments``` - This route lists all the comments for particular discussion in the order that they were created.
       * Request body -
          ```json
          {}
@@ -155,21 +155,21 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          }
          ```
       * Status code of the response - `200`
-      * Query parameters in request (dafault) - 
+      * Query parameters in request (default) - 
          ```json
          {
             "page": 1,
             "per_page": 10
          }
          ```
-      * Parameters in request url - 
+      * Route Parameters in request URL - 
          ```json 
          {
-            "discussionId": "DISCUSSION_ID"
+            "discussion_Id": "DISCUSSION_ID"
          }
          ```
 
-   4. ```POST /v1/discussion/``` - This route creates a discussion post in the particular repository.
+   4. ```POST [PROTECTED ROUTE] /v1/discussion/``` - This route posts new discussion in the particular repository.
       * Request body - 
          ```json
          {
@@ -189,7 +189,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          ```
       * Status code of the response - `200`
    
-   5. ```POST /v1/discussion/comment/``` - This route creates a comment on the particular discussion.
+   5. ```POST [PROTECTED ROUTE] /v1/discussion/comment/``` - This route creates new comment on particular discussion.
       * Request body - 
          ```json
          {
@@ -208,7 +208,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          }
       * Status code of the response - `200`
    
-   6. ```POST /v1/discussion/:discussionId``` - This route lets user report particular discussion.
+   6. ```POST [PROTECTED ROUTE] /v1/discussion/:discussion_Id``` - This route lets user report particular discussion.
       * Request body -
          ```json
          {
@@ -230,13 +230,13 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
                "message": "DISCUSSION ALREADY REPORTED"
             }
             ```
-      * Parameters in request url - 
+      * Route Parameters in request URL - 
          ```json 
          {
-            "discussionId": "DISCUSSION_ID"
+            "discussion_Id": "DISCUSSION_ID"
          }
          ```
-   7. ```POST /v1/discussion/:discussionId/comment/:commentId``` - This route lets user report particular comment.
+   7. ```POST [PROTECTED ROUTE] /v1/discussion/:discussion_Id/comment/:comment_Id``` - This route lets user report particular comment.
       * Request body - 
          ```json
          {
@@ -259,11 +259,11 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
                "message": "COMMENT_ALREADY_REPORTED"
             }
             ```
-      * Parameters in request url - 
+      * Route Parameters in request URL - 
          ```json 
          {
-            "discussionId": "DISCUSSION_ID",
-            "commentId": "COMMENT_ID"
+            "discussion_Id": "DISCUSSION_ID",
+            "comment_Id": "COMMENT_ID"
          }
          ```
    
