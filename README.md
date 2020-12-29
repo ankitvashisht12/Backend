@@ -271,10 +271,6 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          
 ##### **User routes**
 1. ```GET [PROTECTED ROUTE] /v1/user/profiles``` - This route lists all the profiles.
-      * Request body - 
-         ```json
-         {}
-         ```
       * Response body - 
          ```json
          {
