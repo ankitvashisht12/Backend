@@ -137,7 +137,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
             "repoId": "REPOSITORY_ID"
          }
 
-   3. ```GET [PROTECTED ROUTE] /v1/discussion/:discussion_Id/comments``` - This route lists all the comments for particular discussion in the order that they were created.
+   3. ```GET [PROTECTED ROUTE] /v1/discussion/:discussion_id/comments``` - This route lists all the comments for particular discussion in the order that they were created.
       * Request body -
          ```json
          {}
@@ -165,7 +165,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
       * Route Parameters in request URL - 
          ```json 
          {
-            "discussion_Id": "DISCUSSION_ID"
+            "discussion_id": "DISCUSSION_ID"
          }
          ```
 
@@ -208,7 +208,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          }
       * Status code of the response - `200`
    
-   6. ```POST [PROTECTED ROUTE] /v1/discussion/:discussion_Id``` - This route lets user report particular discussion.
+   6. ```POST [PROTECTED ROUTE] /v1/discussion/:discussionId``` - This route lets user report particular discussion.
       * Request body -
          ```json
          {
@@ -233,10 +233,10 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
       * Route Parameters in request URL - 
          ```json 
          {
-            "discussion_Id": "DISCUSSION_ID"
+            "discussionId": "DISCUSSION_ID"
          }
          ```
-   7. ```POST [PROTECTED ROUTE] /v1/discussion/:discussion_Id/comment/:comment_Id``` - This route lets user report particular comment.
+   7. ```POST [PROTECTED ROUTE] /v1/discussion/:discussionId/comment/:commentId``` - This route lets user report particular comment.
       * Request body - 
          ```json
          {
@@ -262,8 +262,8 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
       * Route Parameters in request URL - 
          ```json 
          {
-            "discussion_Id": "DISCUSSION_ID",
-            "comment_Id": "COMMENT_ID"
+            "discussionId": "DISCUSSION_ID",
+            "commentId": "COMMENT_ID"
          }
          ```
    
