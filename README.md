@@ -268,3 +268,129 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
             "commentId": "COMMENT_ID"
          }
          ```
+##### **User routes**
+1. ```GET [PROTECTED ROUTE] /v1/user/profiles``` - This route lists all the profiles.
+      * Request body - 
+         ```json
+         {}
+         ```
+      * Response body - 
+         ```json
+         {
+          "totalPages": "TOTAL PAGES AVAILABLE",
+          "currentPage": "CURRENT PAGE NUMBER",
+          "users": {
+            "_id": "USER_ID",
+            "name": "USER NAME",
+            "profileImage": "USER PROFILE IMAGE"
+          }
+         }
+         ```
+      * Status code of the response - `200`
+      * Query parameters in request (default) - 
+         ```json
+         {
+            "page": 1,
+            "per_page": 10
+         }
+         ```
+2. ```GET [PROTECTED ROUTE] /v1/user/profile/:id``` - This route lists profile of a particular user.
+      * Request body - 
+         ```json
+         {}
+         ```
+      * Response body - 
+         ```json
+         {
+          "data": {
+            "_id": "USER_ID",
+            "name": "USER NAME",
+            "profileImage": "USER PROFILE IMAGE"
+          }
+         }
+         ```
+      * Status code of the response - `200`
+      * Route Parameters in request URL - 
+         ```json 
+         {
+            "id": "USER_ID"
+         }
+         ```
+3. ```GET [PROTECTED ROUTE] /v1/user/profile``` - This route lists ?.
+      * Request body - 
+         ```json
+         {}
+         ```
+      * Response body - 
+         ```json
+         {
+          "data": {
+            "_id": "USER_ID",
+            "name": "USER NAME",
+            "profileImage": "USER PROFILE IMAGE"
+          }
+         }
+         ```
+      * Status code of the response - `200`
+4. ```PATCH [PROTECTED ROUTE] /v1/user/profile``` - This route lets user update their profile.
+      * Request body - 
+         ```json
+         {
+            "name": "USER NAME",
+            "about": "ABOUT",
+            "skills": "SKILLS",
+            "title": "TITLE"
+         }
+         ```
+      * Response body - 
+         ```json
+         {
+         "data": {
+            "_id": "USER_ID",
+            "name": "USER NAME",
+            "profileImage": "USER PROFILE IMAGE"
+          }
+         }
+         ```
+      * Status code of the response - `200`
+   
+5. ```PATCH [PROTECTED ROUTE] /v1/user/socials``` - This route lets user update their social data.
+      * Request body - 
+         ```json
+         {}
+         ```
+      * Response body - 
+         ```json
+         {
+          "data": {
+            "_id": "USER_ID",
+            "name": "USER NAME",
+            "profileImage": "USER PROFILE IMAGE"
+          }
+         }
+         ```
+      * Status code of the response - `200`
+
+6. ```POST [PROTECTED ROUTE] /v1/user/avatar``` - This route lets user upload their profile image .
+      * Request body - 
+         ```json
+         {}
+         ```
+      * Response body - 
+         * If Status code = `200`
+         ```json
+         {
+          "data": {
+            "_id": "USER_ID",
+            "name": "USER NAME",
+            "profileImage": "USER PROFILE IMAGE"
+          }
+         }
+         ```
+
+         * If Status code = `400`
+         ```json
+         {
+            "message": "No file received!"
+         }
+         ```
