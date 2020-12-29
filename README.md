@@ -291,7 +291,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
             "per_page": 10
          }
          ```
-2. ```GET [PROTECTED ROUTE] /v1/user/profile/:id``` - This route lists profile of a particular user.
+2. ```GET [ADMIN PROTECTED ROUTE] /v1/user/profile/:id``` - This route lists profile of a particular user.
       * Response body - 
          ```json
          {
