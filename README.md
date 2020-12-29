@@ -59,7 +59,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
 
 5: Create a PR.
 
-## [WORKFLOW] [https://github.com/CodeTrophs/Backend/wiki]
+### **[WORKFLOW](https://github.com/CodeTrophs/Backend/wiki)**
 
 ### **Here are the different routes available to use.**
 
