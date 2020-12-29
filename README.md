@@ -310,10 +310,6 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          }
          ```
 3. ```GET [PROTECTED ROUTE] /v1/user/profile``` - This route lists ?.
-      * Request body - 
-         ```json
-         {}
-         ```
       * Response body - 
          ```json
          {
