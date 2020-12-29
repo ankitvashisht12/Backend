@@ -356,7 +356,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          ```
       * Status code of the response - `200`
 
-6. ```POST [PROTECTED ROUTE] /v1/user/avatar``` - This route lets user upload their profile image .
+6. ```POST [USER PROTECTED ROUTE] /v1/user/avatar``` - This route lets user upload their profile image .
       * Response body - 
          * If Status code = `200`
          ```json
