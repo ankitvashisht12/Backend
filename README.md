@@ -309,7 +309,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
             "id": "USER_ID"
          }
          ```
-3. ```GET [PROTECTED ROUTE] /v1/user/profile``` - This route lists ?.
+3. ```GET [USER PROTECTED ROUTE] /v1/user/profile``` - This route lists ?.
       * Response body - 
          ```json
          {
