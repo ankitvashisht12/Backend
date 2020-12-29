@@ -321,7 +321,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          }
          ```
       * Status code of the response - `200`
-4. ```PATCH [PROTECTED ROUTE] /v1/user/profile``` - This route lets user update their profile.
+4. ```PATCH [USER PROTECTED ROUTE] /v1/user/profile``` - This route lets the user update their profile.
       * Request body - 
          ```json
          {
