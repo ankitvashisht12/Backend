@@ -1,1 +1,1 @@
-#### This is the beginning of the discussion routes docs!
+#### This is the beginning of the user routes docs!
