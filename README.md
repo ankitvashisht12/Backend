@@ -278,8 +278,13 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
           "currentPage": "CURRENT PAGE NUMBER",
           "users": {
             "_id": "USER_ID",
-            "name": "USER NAME",
-            "profileImage": "USER PROFILE IMAGE"
+            "name",
+            "profileImage",
+            "about",
+            "title",
+            "role",
+            "skills",
+            "socials",
           }
          }
          ```
@@ -297,8 +302,13 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          {
           "data": {
             "_id": "USER_ID",
-            "name": "USER NAME",
-            "profileImage": "USER PROFILE IMAGE"
+            "name",
+            "profileImage",
+            "about",
+            "title",
+            "role",
+            "skills",
+            "socials",
           }
          }
          ```
@@ -315,8 +325,13 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          {
           "data": {
             "_id": "USER_ID",
-            "name": "USER NAME",
-            "profileImage": "USER PROFILE IMAGE"
+            "name",
+            "profileImage",
+            "about",
+            "title",
+            "role",
+            "skills",
+            "socials",
           }
          }
          ```
@@ -334,37 +349,52 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
       * Response body - 
          ```json
          {
-         "data": {
+          "data": {
             "_id": "USER_ID",
-            "name": "USER NAME",
-            "profileImage": "USER PROFILE IMAGE"
+            "name",
+            "profileImage",
+            "about",
+            "title",
+            "role",
+            "skills",
+            "socials",
           }
          }
          ```
       * Status code of the response - `200`
    
-5. ```PATCH [USER PROTECTED ROUTE] /v1/user/socials``` - This route lets user update their social data.
+5. ```PATCH [USER PROTECTED ROUTE] /v1/user/socials`,`` - This route lets user update their social data.
       * Response body - 
          ```json
          {
           "data": {
             "_id": "USER_ID",
-            "name": "USER NAME",
-            "profileImage": "USER PROFILE IMAGE"
+            "name",
+            "profileImage",
+            "about",
+            "title",
+            "role",
+            "skills",
+            "socials",
           }
          }
          ```
       * Status code of the response - `200`
 
-6. ```POST [USER PROTECTED ROUTE] /v1/user/avatar``` - This route lets user upload their profile image .
+6. ```POST [USER PROTECTED ROUTE] /v1/user/avatar``` - This route lets user upload their profile image.
       * Response body - 
          * If Status code = `200`
          ```json
          {
           "data": {
             "_id": "USER_ID",
-            "name": "USER NAME",
-            "profileImage": "USER PROFILE IMAGE"
+            "name",
+            "profileImage",
+            "about",
+            "title",
+            "role",
+            "skills",
+            "socials",
           }
          }
          ```
