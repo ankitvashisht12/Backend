@@ -271,6 +271,10 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          
 ##### **User routes**
 1. ```GET [ADMIN PROTECTED ROUTE] /v1/user/profiles``` - This route lists all the profiles.
+      * Request body - 
+         ```json
+         {}
+         ```
       * Response body - 
          ```json
          {
@@ -278,13 +282,13 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
           "currentPage": "CURRENT PAGE NUMBER",
           "users": {
             "_id": "USER_ID",
-            "name",
-            "profileImage",
-            "about",
-            "title",
-            "role",
-            "skills",
-            "socials",
+            "name": "USER NAME",
+            "profileImage": "PROFILE IMAGE",
+            "about": "ABOUT USER",
+            "title": "TITLE",
+            "role": "ROLE",
+            "skills": "SKILLS",
+            "socials": "USER SOCIALS",
           }
          }
          ```
@@ -297,18 +301,22 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          }
          ```
 2. ```GET [ADMIN PROTECTED ROUTE] /v1/user/profile/:id``` - This route lists profile of a particular user.
+      * Request body - 
+         ```json
+         {}
+         ```
       * Response body - 
          ```json
          {
           "data": {
             "_id": "USER_ID",
-            "name",
-            "profileImage",
-            "about",
-            "title",
-            "role",
-            "skills",
-            "socials",
+            "name": "USER NAME",
+            "profileImage": "PROFILE IMAGE",
+            "about": "ABOUT USER",
+            "title": "TITLE",
+            "role": "ROLE",
+            "skills": "SKILLS",
+            "socials": "USER SOCIALS",
           }
          }
          ```
@@ -319,19 +327,23 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
             "id": "USER_ID"
          }
          ```
-3. ```GET [USER PROTECTED ROUTE] /v1/user/profile``` - This route lists ?.
+3. ```GET [USER PROTECTED ROUTE] /v1/user/profile``` - This route list profile of user.
+      * Request body - 
+         ```json
+         {}
+         ```
       * Response body - 
          ```json
          {
           "data": {
             "_id": "USER_ID",
-            "name",
-            "profileImage",
-            "about",
-            "title",
-            "role",
-            "skills",
-            "socials",
+            "name": "USER NAME",
+            "profileImage": "PROFILE IMAGE",
+            "about": "ABOUT USER",
+            "title": "TITLE",
+            "role": "ROLE",
+            "skills": "SKILLS",
+            "socials": "USER SOCIALS",
           }
          }
          ```
@@ -351,50 +363,58 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          {
           "data": {
             "_id": "USER_ID",
-            "name",
-            "profileImage",
-            "about",
-            "title",
-            "role",
-            "skills",
-            "socials",
+            "name": "USER NAME",
+            "profileImage": "PROFILE IMAGE",
+            "about": "ABOUT USER",
+            "title": "TITLE",
+            "role": "ROLE",
+            "skills": "SKILLS",
+            "socials": "USER SOCIALS",
           }
          }
          ```
       * Status code of the response - `200`
    
 5. ```PATCH [USER PROTECTED ROUTE] /v1/user/socials`,`` - This route lets user update their social data.
+      * Request body - 
+         ```json
+         {}
+         ```
       * Response body - 
          ```json
          {
           "data": {
             "_id": "USER_ID",
-            "name",
-            "profileImage",
-            "about",
-            "title",
-            "role",
-            "skills",
-            "socials",
+            "name": "USER NAME",
+            "profileImage": "PROFILE IMAGE",
+            "about": "ABOUT USER",
+            "title": "TITLE",
+            "role": "ROLE",
+            "skills": "SKILLS",
+            "socials": "USER SOCIALS",
           }
          }
          ```
       * Status code of the response - `200`
 
 6. ```POST [USER PROTECTED ROUTE] /v1/user/avatar``` - This route lets user upload their profile image.
+      * Request body - 
+         ```json
+         {}
+         ```
       * Response body - 
          * If Status code = `200`
          ```json
          {
           "data": {
             "_id": "USER_ID",
-            "name",
-            "profileImage",
-            "about",
-            "title",
-            "role",
-            "skills",
-            "socials",
+            "name": "USER NAME",
+            "profileImage": "PROFILE IMAGE",
+            "about": "ABOUT USER",
+            "title": "TITLE",
+            "role": "ROLE",
+            "skills": "SKILLS",
+            "socials": "USER SOCIALS",
           }
          }
          ```
