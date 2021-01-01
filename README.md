@@ -327,7 +327,7 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
             "id": "USER_ID"
          }
          ```
-3. ```GET [USER PROTECTED ROUTE] /v1/user/profile``` - This route list profile of user.
+3. ```GET [USER PROTECTED ROUTE] /v1/user/profile``` - This route lists the profile of the logged in user.
       * Request body - 
          ```json
          {}
