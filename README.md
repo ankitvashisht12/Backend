@@ -62,33 +62,3 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
 5: Create a PR.
 
 ### **[WORKFLOW](https://github.com/CodeTrophs/Backend/wiki)**
-
-### **Here are the different routes available to use.**
-
-##### **Github routes**
-
-1.  `GET /v1/discussion/` - This route lists all the public repositories in the order that they were created.
-    - Request body -
-      ```json
-      {}
-      ```
-    - Response body -
-      ```json
-      {
-        "totalPages": "TOTAL PAGES AVAILABLE",
-        "currentPage": "CURRENT PAGE NUMBER",
-        "discussions": {
-          "question": "QUESTION",
-          "userId": "USER_ID",
-          "repository": "REPOSITORY_NAME"
-        }
-      }
-      ```
-    - Status code of the response - `200`
-    - Query parameters in request (default) -
-      ```json
-      {
-        "page": 1,
-        "per_page": 10
-      }
-      ```
