@@ -375,10 +375,16 @@ Open the `codetrophs` directory in your code editor of choice and edit files und
          ```
       * Status code of the response - `200`
    
-5. ```PATCH [USER PROTECTED ROUTE] /v1/user/socials`,`` - This route lets user update their social data.
+5. ```PATCH [USER PROTECTED ROUTE] /v1/user/socials``` - This route lets user update their social data.
       * Request body - 
          ```json
-         {}
+         { 
+            "website": "WEBSITE URL",
+            "github": "GITHUB URL",
+            "linkedIn": "LINKEDIN URL",
+            "twitter": "TWITTER URL"
+         
+         }
          ```
       * Response body - 
          ```json
