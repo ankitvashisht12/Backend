@@ -2,7 +2,7 @@
 
 ##### **Skill Test routes**
 
-1. `GET [PROTECTED ROUTE] /v1/skillTest` - This route lists all the skill Tests.
+1. `GET [ADMIN PROTECTED ROUTE] /v1/skillTest` - This route lists all the skill Tests.
    - Request body -
      ```json
      {}
@@ -25,8 +25,8 @@
    - Query parameters in request (default) -
      ```json
      {
-       "page": 1,
-	   "per_page": 10,
-	   "isPublished": "BOOL VALUE"
+      "page": 1,
+      "per_page": 10,
+      "isPublished": "BOOL VALUE"
      }
      ```
