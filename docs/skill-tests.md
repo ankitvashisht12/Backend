@@ -15,7 +15,7 @@
       "skillTests": {
         "_id": "ID",
         "name": "USER NAME",
-        "isPublished": "TRUE",
+        "isPublished": "FALSE (DEFAULT)",
         "image": "IMAGE URL",
         "description": "DESCRIPTION"
       }
@@ -65,3 +65,30 @@
     }
     ```
   
+
+3. `POST [ADMIN PROTECTED ROUTE] /v1/skillTest` - This route lets user post skill Test.
+  - Request body -
+    ```json
+    {
+      "name": "USER NAME",
+      "image": "IMAGE URL",
+      "description": "DESCRIPTION"
+    }
+    ```
+  - Response body -
+    ```json
+    {
+      "totalPages": "TOTAL PAGES AVAILABLE",
+      "currentPage": "CURRENT PAGE NUMBER",
+      "skillTests": {
+        "_id": "ID",
+        "name": "USER NAME",
+        "isPublished": "FALSE (DEFAULT)",
+        "image": "IMAGE URL",
+        "description": "DESCRIPTION"
+      }
+    }
+    ```
+  - Status code of the response - `200`
+  
+
