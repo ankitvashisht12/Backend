@@ -213,10 +213,6 @@
     
 
 9. `DELETE [ADMIN PROTECTED ROUTE] /v1/skillTest/publish/:testId` - This route deletes published test for particular test id.
-    - Request body -
-      ```json
-      {}
-      ```
     - Response body -
       ```
       Skill Test unpublished successfully
