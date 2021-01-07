@@ -195,10 +195,6 @@
       ```
 
 8. `DELETE [ADMIN PROTECTED ROUTE] /v1/skillTest/question/:questionId` - This route deletes question for particular question id.
-    - Request body -
-      ```json
-      {}
-      ```
     - Response body -
       ```
       Skill Test Question removed successfully
