@@ -2,7 +2,7 @@
 
 ##### **Skill Test routes**
 
-1. `GET [ADMIN PROTECTED ROUTE] /v1/skillTest` - This route lists all the skill Tests.
+1. `GET [USER PROTECTED ROUTE] /v1/skillTest` - This route lists all the skill Tests.
     - Request body -
       ```json
       {}
@@ -14,7 +14,7 @@
         "currentPage": "CURRENT PAGE NUMBER",
         "skillTests": {
           "_id": "ID",
-          "name": "USER NAME",
+          "name": "SKILL TEST NAME",
           "isPublished": "FALSE (DEFAULT)",
           "image": "IMAGE URL",
           "description": "DESCRIPTION"
@@ -25,13 +25,13 @@
     - Query parameters in request (default) -
       ```json
       {
-      "page": 1,
-      "per_page": 10,
-      "isPublished": "BOOL VALUE"
+        "page": 1,
+        "per_page": 10,
+        "isPublished": "BOOL VALUE"
       }
       ```
 
-2. `GET [ADMIN PROTECTED ROUTE] /v1/skillTest/:testId` - This route lists all the skill Test Questions of particular test id.
+2. `GET [USER PROTECTED ROUTE] /v1/skillTest/:testId` - This route lists all the skill Test Questions of particular test id.
     - Request body -
       ```json
       {}
@@ -54,8 +54,8 @@
     - Query parameters in request (default) -
       ```json
       {
-      "page": 1,
-      "per_page": 10
+        "page": 1,
+        "per_page": 10
       }
       ```
     - Route Parameters in request URL - 
@@ -70,7 +70,7 @@
     - Request body -
       ```json
       {
-        "name": "USER NAME",
+        "name": "SKILL TEST NAME",
         "image": "IMAGE URL",
         "description": "DESCRIPTION"
       }
@@ -80,7 +80,7 @@
       {
         "data": {
           "_id": "ID",
-          "name": "USER NAME",
+          "name": "SKILL TEST NAME",
           "isPublished": "FALSE (DEFAULT)",
           "image": "IMAGE URL",
           "description": "DESCRIPTION"
@@ -103,7 +103,7 @@
     - Route Parameters in request URL -
       ```json
       {
-      "testId": "TEST_ID"
+        "testId": "TEST_ID"
       }
       ```
 
@@ -132,7 +132,7 @@
     - Route Parameters in request URL -
       ```json
       {
-      "testId": "TEST_ID"
+        "testId": "TEST_ID"
       }
       ```
 
@@ -165,21 +165,25 @@
     - Route Parameters in request URL -
       ```json
       {
-      "questionId": "QUESTION_ID"
+        "questionId": "QUESTION_ID"
       }
       ```
     
 7. `PATCH [ADMIN PROTECTED ROUTE] /v1/skillTest/:id` - This route lets user update the skill Test of particular skill test id.
     - Request body -
       ```json
-      {}
+      {
+        "name": "SKILL TEST NAME",
+        "image": "IMAGE URL",
+        "description": "DESCRIPTION"
+      }
       ```
     - Response body -
       ```json
       {
         "data": {
           "_id": "ID",
-          "name": "USER NAME",
+          "name": "SKILL TEST NAME",
           "isPublished": "FALSE (DEFAULT)",
           "image": "IMAGE URL",
           "description": "DESCRIPTION"
@@ -190,7 +194,7 @@
     - Route Parameters in request URL -
       ```json
       {
-      "id": "ID"
+        "id": "ID"
       }
       ```
 
@@ -207,7 +211,7 @@
     - Route Parameters in request URL -
       ```json
       {
-      "questionId": "QUESTION_ID"
+        "questionId": "QUESTION_ID"
       }
       ```
     
@@ -225,7 +229,7 @@
     - Route Parameters in request URL -
       ```json
       {
-      "testId": "TEST_ID"
+        "testId": "TEST_ID"
       }
       ```
 
@@ -242,6 +246,6 @@
     - Route Parameters in request URL -
       ```json
       {
-      "id": "ID"
+        "id": "ID"
       }
       ```
