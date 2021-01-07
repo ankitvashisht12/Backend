@@ -3,10 +3,7 @@
 ##### **User routes**
 
 1. `GET [ADMIN PROTECTED ROUTE] /v1/user/profiles` - This route lists all the profiles.
-   - Request body -
-     ```json
-     {}
-     ```
+
    - Response body -
      ```json
      {
@@ -33,10 +30,7 @@
      }
      ```
 2. `GET [ADMIN PROTECTED ROUTE] /v1/user/profile/:id` - This route lists profile of a particular user.
-   - Request body -
-     ```json
-     {}
-     ```
+
    - Response body -
      ```json
      {
@@ -60,10 +54,7 @@
      }
      ```
 3. `GET [USER PROTECTED ROUTE] /v1/user/profile` - This route lists the profile of the logged in user.
-   - Request body -
-     ```json
-     {}
-     ```
+
    - Response body -
      ```json
      {
@@ -136,10 +127,6 @@
 
 6. `POST [USER PROTECTED ROUTE] /v1/user/avatar` - This route lets user upload their profile image.
 
-   - Request body -
-     ```json
-     {}
-     ```
    - Response body -
 
      - If Status code = `200`
