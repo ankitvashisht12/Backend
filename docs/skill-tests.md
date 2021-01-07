@@ -28,10 +28,6 @@
       ```
 
 2. `GET [USER PROTECTED ROUTE] /v1/skillTest/:testId` - This route lists all the skill Test Questions of particular test id.
-    - Request body -
-      ```json
-      {}
-      ```
     - Response body -
       ```json
       {
