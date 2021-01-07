@@ -230,10 +230,6 @@
       ```
 
 10. `DELETE [ADMIN PROTECTED ROUTE] /v1/skillTest/:id` - This route deletes skill test for particular skill test id.
-    - Request body -
-      ```json
-      {}
-      ```
     - Response body -
       ```
       Skill Test removed successfully
