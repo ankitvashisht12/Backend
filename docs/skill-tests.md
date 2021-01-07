@@ -87,10 +87,6 @@
     
 
 4. `PATCH [ADMIN PROTECTED ROUTE] /v1/skillTest/publish/:testId` - This route lets user publish skill test.
-    - Request body -
-      ```json
-      {}
-      ```
     - Response body -
       ```
       Skill Test published successfully
