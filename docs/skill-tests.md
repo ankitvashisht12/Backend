@@ -3,10 +3,6 @@
 ##### **Skill Test routes**
 
 1. `GET [USER PROTECTED ROUTE] /v1/skillTest` - This route lists all the skill Tests.
-    - Request body -
-      ```json
-      {}
-      ```
     - Response body -
       ```json
       {
