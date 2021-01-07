@@ -4,10 +4,6 @@
 
 1.  `GET [USER PROTECTED ROUTE] /v1/discussion/` - This route lists all the discussions in the order that they were created.
 
-    - Request body -
-      ```json
-      {}
-      ```
     - Response body -
       ```json
       {
@@ -31,10 +27,6 @@
 
 2.  `GET [USER PROTECTED ROUTE] /v1/discussion/:repoId` - This route lists all the discussions available in the repository in the order that they were created.
 
-    - Request body -
-      ```json
-      {}
-      ```
     - Response body -
       ```json
       {
@@ -55,10 +47,6 @@
 
 3.  `GET [USER PROTECTED ROUTE] /v1/discussion/:discussion_id/comments` - This route lists all the comments for particular discussion in the order that they were created.
 
-    - Request body -
-      ```json
-      {}
-      ```
     - Response body -
       ```json
       {
@@ -129,6 +117,7 @@
     - Status code of the response - `200`
 
 6.  `POST [USER PROTECTED ROUTE] /v1/discussion/:discussionId` - This route lets user report particular discussion.
+
     - Request body -
       ```json
       {
@@ -157,6 +146,7 @@
       }
       ```
 7.  `POST [USER PROTECTED ROUTE] /v1/discussion/:discussionId/comment/:commentId` - This route lets user report particular comment.
+
     - Request body -
       ```json
       {
