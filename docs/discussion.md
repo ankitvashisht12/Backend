@@ -45,7 +45,7 @@
       }
       ```
 
-3.  `GET [USER PROTECTED ROUTE] /v1/discussion/:discussion_id/comments` - This route lists all the comments for particular discussion in the order that they were created.
+3.  `GET [USER PROTECTED ROUTE] /v1/discussion/:discussionId/comments` - This route lists all the comments for particular discussion in the order that they were created.
 
     - Response body -
       ```json
@@ -70,7 +70,7 @@
     - Route Parameters in request URL -
       ```json
       {
-        "discussion_id": "DISCUSSION_ID"
+        "discussionId": "DISCUSSION_ID"
       }
       ```
 
@@ -116,7 +116,7 @@
       ```
     - Status code of the response - `200`
 
-6.  `POST [USER PROTECTED ROUTE] /v1/discussion/:discussionId` - This route lets user report particular discussion.
+6.  `POST [USER PROTECTED ROUTE] /v1/discussion/report/:discussionId` - This route lets user report particular discussion.
 
     - Request body -
       ```json
@@ -145,7 +145,8 @@
         "discussionId": "DISCUSSION_ID"
       }
       ```
-7.  `POST [USER PROTECTED ROUTE] /v1/discussion/:discussionId/comment/:commentId` - This route lets user report particular comment.
+
+7.  `POST [USER PROTECTED ROUTE] /v1/discussion/report/:discussionId/comment/:commentId` - This route lets user report particular comment.
 
     - Request body -
       ```json

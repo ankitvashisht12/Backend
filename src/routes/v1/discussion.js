@@ -7,16 +7,16 @@ const controller = require('../../controllers/v1/discussion');
 
 router.get('/', authenticator(), controller.getDiscussions);
 router.get('/:repoId', authenticator(), controller.getDiscussionByRepoId);
-router.get('/:discussion_id/comments', authenticator(), controller.getComments);
+router.get('/:discussionId/comments', authenticator(), controller.getComments);
 router.post('/', authenticator(), controller.postDiscussion);
 router.post('/comment', authenticator(), controller.postComment);
 router.post(
-  '/:discussionId',
+  '/report/:discussionId',
   authenticator(),
   controller.reportDiscussionDetails,
 );
 router.post(
-  '/:discussionId/comment/:commentId',
+  '/report/:discussionId/comment/:commentId',
   authenticator(),
   controller.reportDiscussionCommentDetails,
 );
