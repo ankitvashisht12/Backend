@@ -39,7 +39,7 @@ module.exports = {
 
   getComments: create(async (req, res) => {
     // eslint-disable-next-line camelcase
-    const { discussion_id: discussionId } = req.params;
+    const { discussionId } = req.params;
     const { page = 1, per_page: perPage = 10 } = req.query;
 
     const discussionComments = await DiscussionComment.find({
