@@ -16,6 +16,10 @@ const DiscussionCommentSchema = new mongoose.Schema(
       ref: 'Discussion',
       required: true,
     },
+    reportsCount: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true },
 );
