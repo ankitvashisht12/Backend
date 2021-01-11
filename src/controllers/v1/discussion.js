@@ -168,6 +168,10 @@ module.exports = {
 
       const reportDiscussionCommentDetails = await newReportDiscussionCommentDetails.save();
 
+      await DiscussionComment.findByIdAndUpdate(commentId, {
+        $inc: { reportsCount: 1 },
+      });
+
       return res.json({ data: reportDiscussionCommentDetails });
     },
     {
