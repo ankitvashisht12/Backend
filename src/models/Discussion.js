@@ -17,7 +17,6 @@ const DiscussionSchema = new mongoose.Schema(
     },
     reportsCount: {
       type: Number,
-      require: true,
       default: 0,
     },
   },
