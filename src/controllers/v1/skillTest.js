@@ -48,6 +48,18 @@ module.exports = {
 
     const count = await SkillTestQuestion.find({ testId }).countDocuments();
 
+    if (req.user.role !== ROLES.ADMIN) {
+      const { correctIndex, ...userSkillTestQuestions } = skillTestQuestions;
+
+      return res.json({
+        data: {
+          totalPages: Math.ceil(count / perPage),
+          currentPage: page,
+          skillTestQuestions: userSkillTestQuestions,
+        },
+      });
+    }
+
     return res.json({
       data: {
         totalPages: Math.ceil(count / perPage),
