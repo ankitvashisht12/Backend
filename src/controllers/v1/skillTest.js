@@ -55,7 +55,7 @@ module.exports = {
         data: {
           totalPages: Math.ceil(count / perPage),
           currentPage: page,
-          userSkillTestQuestions,
+          skillTestQuestions: userSkillTestQuestions,
         },
       });
     }
