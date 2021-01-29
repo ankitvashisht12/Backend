@@ -5,111 +5,93 @@
 1. `GET [USER PROTECTED ROUTE] /v1/github/repositories` - This route lists all the repositories.
     - Response body -
       ```json
+      Array of objects containing information about repository. For Example :
       {
-        
-		
+        "data": {
+          "total_count": "NUMBER",
+          "items": [
+            {
+              "id": "REPO_ID",
+              "name": "REPO NAME",
+              "full_name": "REPO FULL NAME",
+              "owner": "OWNER DETAILS",
+              "private": "BOOL"
+            }
+          ]
+        }
       }
       ```
     - Status code of the response - `200`
     - Query parameters in request (default) -
       ```json
       {
-		"query": "is:public",
-		"sort": "stars",
-		"order": "desc",
+        "query": "is:public",
+        "sort": "stars",
+        "order": "desc",
         "page": 1,
         "per_page": 20
       }
       ```
 
-2. `GET [USER PROTECTED ROUTE] /v1/github/repositories/:owner/:repo` - This route lists all the repositories of particular owner.
+2. `GET [USER PROTECTED ROUTE] /v1/github/repositories/:owner/:repo` - This route lists  the repository of particular owner.
     - Response body -
       ```json
+      Response contain object about particular repository. For Example,
+
       {
-        "totalPages": "TOTAL PAGES AVAILABLE",
-        "currentPage": "CURRENT PAGE NUMBER",
-        "githubs": {
-          "_id": "ID",
-          "name": "SKILL TEST NAME",
-          "isPublished": "FALSE (DEFAULT)",
-          "image": "IMAGE URL",
-          "description": "DESCRIPTION"
+        "data": {
+          "id": "REPO_ID",
+          "name": "REPO NAME",
+          "full_name": "REPO FULL NAME",
+          "owner": "OWNER DETAILS",
+          "private": "BOOL"
         }
-      }
+      } 
       ```
     - Status code of the response - `200`
-    - Query parameters in request (default) -
+    - Route Parameters in request URL -
       ```json
       {
-        "page": 1,
-        "per_page": 10,
-        "isPublished": "BOOL VALUE"
+        "owner": "OWNER",
+        "repo": "REPO"
       }
       ```
 
-3. `PUT [USER PROTECTED ROUTE] /v1/github/starred/:owner/:repo` - This route ?.
+3. `PUT [USER PROTECTED ROUTE] /v1/github/starred/:owner/:repo` - This route lets user star the repository of particular owner.
     - Response body -
-      ```json
-      {
-        "totalPages": "TOTAL PAGES AVAILABLE",
-        "currentPage": "CURRENT PAGE NUMBER",
-        "githubs": {
-          "_id": "ID",
-          "name": "SKILL TEST NAME",
-          "isPublished": "FALSE (DEFAULT)",
-          "image": "IMAGE URL",
-          "description": "DESCRIPTION"
-        }
-      }
+      ```
+      Sends Response Status Code - 204
       ```
     - Status code of the response - `200`
-    - Query parameters in request (default) -
+    - Route Parameters in request URL -
       ```json
       {
-        "page": 1,
-        "per_page": 10,
-        "isPublished": "BOOL VALUE"
+        "owner": "OWNER",
+        "repo": "REPO"
       }
       ```
 
-4. `DELETE [USER PROTECTED ROUTE] /v1/github/starred/:owner/:repo` - This route deletes starred repo of particular owner.
+4. `DELETE [USER PROTECTED ROUTE] /v1/github/starred/:owner/:repo` - This route lets user unstar repo of particular owner.
     - Response body -
-      ```json
-      {
-        "totalPages": "TOTAL PAGES AVAILABLE",
-        "currentPage": "CURRENT PAGE NUMBER",
-        "githubs": {
-          "_id": "ID",
-          "name": "SKILL TEST NAME",
-          "isPublished": "FALSE (DEFAULT)",
-          "image": "IMAGE URL",
-          "description": "DESCRIPTION"
-        }
-      }
+      ```
+      Sends Response Status Code - 204
       ```
     - Status code of the response - `200`
-    - Query parameters in request (default) -
+    - Route Parameters in request URL -
       ```json
       {
-        "page": 1,
-        "per_page": 10,
-        "isPublished": "BOOL VALUE"
+        "owner": "OWNER",
+        "repo": "REPO"
       }
       ```
+     
 
 5. `GET [USER PROTECTED ROUTE] /v1/github/pulls/:owner/:repo` - This route lists all the pulls of particular owner for particular repo.
     - Response body -
       ```json
       {
-        "totalPages": "TOTAL PAGES AVAILABLE",
-        "currentPage": "CURRENT PAGE NUMBER",
-        "githubs": {
-          "_id": "ID",
-          "name": "SKILL TEST NAME",
-          "isPublished": "FALSE (DEFAULT)",
-          "image": "IMAGE URL",
-          "description": "DESCRIPTION"
-        }
+        "data": "LIST OF PULLS",
+        "hasNext": "BOOL"
       }
       ```
     - Status code of the response - `200`
@@ -117,8 +99,14 @@
       ```json
       {
         "page": 1,
-        "per_page": 10,
-        "isPublished": "BOOL VALUE"
+        "per_page": 20
+      }
+      ```
+    - Route Parameters in request URL -
+      ```json
+      {
+        "owner": "OWNER",
+        "repo": "REPO"
       }
       ```
 
@@ -126,15 +114,8 @@
     - Response body -
       ```json
       {
-        "totalPages": "TOTAL PAGES AVAILABLE",
-        "currentPage": "CURRENT PAGE NUMBER",
-        "githubs": {
-          "_id": "ID",
-          "name": "SKILL TEST NAME",
-          "isPublished": "FALSE (DEFAULT)",
-          "image": "IMAGE URL",
-          "description": "DESCRIPTION"
-        }
+        "data": "LIST OF ISSUES",
+        "hasNext": "BOOL"
       }
       ```
     - Status code of the response - `200`
@@ -142,24 +123,37 @@
       ```json
       {
         "page": 1,
-        "per_page": 10,
-        "isPublished": "BOOL VALUE"
+        "per_page": 20,
+        "milestone": "MILESTONE",
+        "sort": "created",
+        "direction": "desc",
+        "assignee": "ASSIGNEE"
+      }
+      ```
+    - Route Parameters in request URL -
+      ```json
+      {
+        "owner": "OWNER",
+        "repo": "REPO"
       }
       ```
 
 7. `GET [USER PROTECTED ROUTE] /v1/github/starred` - This route lists all the starred repositories.
     - Response body -
       ```json
+
+      Response contain array of objects containing information of starred repositories. For Example, 
+
       {
-        "totalPages": "TOTAL PAGES AVAILABLE",
-        "currentPage": "CURRENT PAGE NUMBER",
-        "githubs": {
-          "_id": "ID",
-          "name": "SKILL TEST NAME",
-          "isPublished": "FALSE (DEFAULT)",
-          "image": "IMAGE URL",
-          "description": "DESCRIPTION"
-        }
+        "data": [
+          {
+            "id": "REPO_ID",
+            "name": "REPO NAME",
+            "full_name": "REPO FULL NAME",
+            "owner": "OWNER DETAILS",
+            "private": "BOOL" 
+          }
+        ]
       }
       ```
     - Status code of the response - `200`
@@ -167,7 +161,8 @@
       ```json
       {
         "page": 1,
-        "per_page": 10,
-        "isPublished": "BOOL VALUE"
+        "per_page": 20,
+        "sort": "created",
+        "direction": "asc"
       }
       ```
