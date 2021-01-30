@@ -4,8 +4,9 @@
 
 1. `GET [USER PROTECTED ROUTE] /v1/github/repositories` - This route lists all the repositories.
     - Response body -
-      ```json
       Array of objects containing information about repository. For Example :
+      ```json
+      
       {
         "data": {
           "total_count": "NUMBER",
@@ -35,9 +36,8 @@
 
 2. `GET [USER PROTECTED ROUTE] /v1/github/repositories/:owner/:repo` - This route lists  the repository of particular owner.
     - Response body -
+      Response contain object about particular repository. For Example :
       ```json
-      Response contain object about particular repository. For Example,
-
       {
         "data": {
           "id": "REPO_ID",
@@ -91,7 +91,7 @@
       ```json
       {
         "data": "LIST OF PULLS",
-        "hasNext": "BOOL"
+        "hasNextPage": "BOOL"
       }
       ```
     - Status code of the response - `200`
@@ -115,7 +115,7 @@
       ```json
       {
         "data": "LIST OF ISSUES",
-        "hasNext": "BOOL"
+        "hasNextPage": "BOOL"
       }
       ```
     - Status code of the response - `200`
@@ -140,10 +140,8 @@
 
 7. `GET [USER PROTECTED ROUTE] /v1/github/starred` - This route lists all the starred repositories.
     - Response body -
+       Response contain array of objects containing information of starred repositories. For Example :
       ```json
-
-      Response contain array of objects containing information of starred repositories. For Example, 
-
       {
         "data": [
           {
@@ -153,7 +151,8 @@
             "owner": "OWNER DETAILS",
             "private": "BOOL" 
           }
-        ]
+        ],
+        "hasNextPage": "BOOL"
       }
       ```
     - Status code of the response - `200`
